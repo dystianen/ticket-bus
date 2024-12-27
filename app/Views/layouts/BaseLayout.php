@@ -5,7 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>e-Commerce Shoes</title>
-  <link href="<?= base_url() ?>css/custom.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style lang="scss">
+    :root {
+      --bs-primary: #352f44;
+      --bs-primary-rgb: 53, 47, 68;
+    }
+
+    .btn-primary {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
+    }
+
+    .btn-primary:hover {
+      background-color: #4f4666;
+      border-color: #4f4666;
+    }
+
+    .btn-outline-primary {
+      color: var(--bs-primary);
+      border-color: var(--bs-primary);
+    }
+
+    .btn-outline-primary:hover {
+      color: white;
+      border-color: var(--bs-primary);
+      background-color: var(--bs-primary);
+    }
+
+    .navbar-dark .navbar-nav .nav-link.active,
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+      color: var(--bs-primary);
+    }
+
+    .border-primary {
+      border-color: var(--bs-primary);
+    }
+
+    .alert-primary {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
+    }
+  </style>
 </head>
 
 <body>
@@ -49,6 +91,7 @@
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
 </body>
 
