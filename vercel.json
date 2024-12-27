@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "composer install && php spark migrate --all",
   "outputDirectory": "public",
   "routes": [
     {
