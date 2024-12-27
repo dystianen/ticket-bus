@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+}
+
+.card-style {
+  height: 200px;
+  background-size: cover;
+  background-color: white;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.card-style h5 {
+  margin: 40px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.link-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -37,59 +37,81 @@
 <section>
   <div class="row">
     <div class="col">
-      <img src="/imgs/logo_converse.svg" alt="">
+      <img src="/assets/images/logo_converse.svg" alt="">
     </div>
     <div class="col">
-      <img src="/imgs/logo_adidas.svg" alt="">
+      <img src="/assets/images/logo_adidas.svg" alt="">
     </div>
     <div class="col">
-      <img src="/imgs/logo_reebok.svg" alt="">
+      <img src="/assets/images/logo_reebok.svg" alt="">
     </div>
     <div class="col">
-      <img src="/imgs/logo_nb.svg" alt="">
+      <img src="/assets/images/logo_nb.svg" alt="">
     </div>
     <div class="col">
-      <img src="/imgs/logo_jordan.svg" alt="">
+      <img src="/assets/images/logo_jordan.svg" alt="">
     </div>
     <div class="col">
-      <img src="/imgs/logo_asics.svg" alt="">
+      <img src="/assets/images/logo_asics.svg" alt="">
     </div>
   </div>
 </section>
 
 <section class="d-flex flex-column align-items-center" style="margin-top: 40px">
-  <h3 class="text-primary" style="font-weight: 700; font-size: 48px">NEW ARRIVALS</h3>
+  <h2 class="text-primary" style="font-weight: 700;">NEW ARRIVALS</h2>
 
   <div class="row">
     <div class="col card-product">
-      <img src="/imgs/logo_converse.svg" alt="">
+      <img src="/assets/images/logo_converse.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
     </div>
     <div class="col card-product">
-      <img src="/imgs/logo_adidas.svg" alt="">
+      <img src="/assets/images/logo_adidas.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
     </div>
     <div class="col card-product">
-      <img src="/imgs/logo_reebok.svg" alt="">
+      <img src="/assets/images/logo_reebok.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
     </div>
     <div class="col card-product">
-      <img src="/imgs/logo_nb.svg" alt="">
+      <img src="/assets/images/logo_nb.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
     </div>
     <div class="col card-product">
-      <img src="/imgs/logo_jordan.svg" alt="">
+      <img src="/assets/images/logo_jordan.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
     </div>
     <div class="col card-product">
-      <img src="/imgs/logo_asics.svg" alt="">
+      <img src="/assets/images/logo_asics.svg" alt="">
       <h5 style="font-weight: 600;">Nike Air Max</h5>
 
+    </div>
+  </div>
+</section>
+
+<section class="gap-3 my-5 rounded-5 d-flex flex-column" style="background-color: var(--bs-cream); width: 100%; padding: 40px 64px">
+  <h2 class="text-center text-primary" style="font-weight: 700">BROWSE Shoes BY Dress STYLE</h2>
+
+  <div class="gap-3 row">
+    <div class="col card-style" style="background-image: url(/assets/images/casual.png);">
+      <h5>Casual</h5>
+    </div>
+    <div class="col-7 card-style" style="background-image: url(/assets/images/formal.png);">
+      <h5>Formal</h5>
+    </div>
+  </div>
+
+  <div class="gap-3 row">
+    <div class="col-7 card-style" style="background-image: url(/assets/images/party.png);">
+      <h5>Party</h5>
+    </div>
+    <div class="col card-style" style="background-image: url(/assets/images/sport.png);">
+      <h5>Sport</h5>
     </div>
   </div>
 </section>

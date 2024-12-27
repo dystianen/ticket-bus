@@ -4,13 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>e-Commerce Shoes</title>
+  <title>IMAGINE!</title>
   <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="/assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     :root {
       --bs-primary: #352f44;
       --bs-primary-rgb: 53, 47, 68;
+      --bs-cream: #FAF0E6
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     .btn-primary {
@@ -61,7 +72,7 @@
 
   <nav class="navbar navbar-expand-lg" style="height: 100px;">
     <div class="container">
-      <a class="navbar-brand" style="font-weight: 700; font-size: 32px" href="#">IMAGINE</a>
+      <a class="navbar-brand text-primary" style="font-weight: 700; font-size: 32px" href="#">IMAGINE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -94,6 +105,41 @@
       <?= $this->renderSection('content') ?>
     </article>
   </main>
+
+  <footer class="py-5 bg-primary">
+    <div class="container text-white">
+      <h3 style="font-weight: 700;">IMAGINE</h3>
+      <div class="row">
+        <div class="col">
+          <p>We have shoes that suits your style and which you’re proud to wear. From women to men.</p>
+        </div>
+        <div class="col link-footer">
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+        </div>
+        <div class="col link-footer">
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+        </div>
+        <div class="col link-footer">
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+        </div>
+        <div class="col link-footer">
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+          <a href="About">About</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
