@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>e-Commerce Shoes</title>
+  <script src="https://unpkg.com/feather-icons"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     :root {
@@ -47,11 +48,16 @@
       background-color: var(--bs-primary);
       border-color: var(--bs-primary);
     }
+
+    .form-control:focus {
+      border-color: #4f4666;
+      box-shadow: none;
+    }
   </style>
 </head>
 
 <body>
-  <header class="pt-1 pb-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="underline" href="/signup"> Sign Up Now</a></header>
+  <header class="pt-1 pb-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white underline" href="/signup"> Sign Up Now</a></header>
 
   <nav class="navbar navbar-expand-lg" style="height: 100px;">
     <div class="container">
@@ -76,7 +82,7 @@
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
         <div class="d-flex">
-          <a href="#" class="btn"><i class="fa-solid fa-cart-shopping" style="font-size: 20px"></i></a>
+          <a href="#" class="btn"><i data-feather="shopping-cart"></i></a>
           <a href="#" class="btn"><i class="fa-regular fa-circle-user" style="font-size: 30px;"></i></a>
         </div>
       </div>
@@ -93,6 +99,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
+  <script>
+    feather.replace();
+  </script>
 </body>
 
 </html>
