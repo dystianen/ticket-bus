@@ -25,9 +25,9 @@
       </div>
     </div>
     <div class="col" style="position: relative; height: 100%">
-      <img src="/assets/imgs/people-style-2.png" alt="people-style-2">
+      <img src="/assets/images/people-style-2.png" alt="people-style-2">
       <div style="position: absolute; bottom: 80px; right: 0px">
-        <img src="/assets/imgs/people-style-1.png" alt="people-style-1">
+        <img src="/assets/images/people-style-1.png" alt="people-style-1">
       </div>
     </div>
   </div>
