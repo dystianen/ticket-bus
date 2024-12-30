@@ -17,7 +17,7 @@
 
     a {
       text-decoration: none;
-      color: white;
+      color: black;
     }
 
     a:hover {
@@ -68,7 +68,7 @@
 </head>
 
 <body>
-  <header class="pt-1 pb-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white underline" href="/signup"> Sign Up Now</a></header>
+  <header class="pt-1 pb-2 px-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white text-decoration-underline" href="/signup"> Sign Up Now</a></header>
 
   <nav class="navbar navbar-expand-lg" style="height: 100px;">
     <div class="container">
@@ -106,38 +106,55 @@
     </article>
   </main>
 
-  <footer class="py-5 bg-primary">
-    <div class="container text-white">
+  <footer class="pt-5 bg-primary" style="margin-top: 10rem;">
+    <section class="subscriber-section container gap-3 mb-5 rounded-3 d-flex flex-column flex-md-row justify-content-between align-content-start align-lg-items-center" style="background-color: var(--bs-cream); margin-top: -7rem;">
+      <h1 class="text-primary" style="font-weight: 700;">STAY UP TO DATE ABOUT <br> OUR LATEST OFFERS</h1>
+
+      <div class="subscriber-input d-flex flex-column gap-2">
+        <input type="email" class="form-control rounded-pill" placeholder="Enter your email address" aria-label="email" aria-describedby="basic-addon1">
+
+        <button class="btn btn-primary rounded-pill">Subscribe to Newsletter</button>
+      </div>
+    </section>
+
+    <div class="container text-white d-flex flex-column gap-2">
       <h3 style="font-weight: 700;">IMAGINE</h3>
       <div class="row">
         <div class="col">
           <p>We have shoes that suits your style and which you’re proud to wear. From women to men.</p>
+          <div class="d-flex gap-2">
+            <button class="btn btn-outline-light"><i data-feather="twitter"></i></button>
+            <button class="btn btn-outline-light"><i data-feather="facebook"></i></button>
+            <button class="btn btn-outline-light"><i data-feather="instagram"></i></button>
+            <button class="btn btn-outline-light"><i data-feather="github"></i></button>
+          </div>
         </div>
         <div class="col link-footer">
           <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
+          <a href="About">FeaturesFeatures</a>
+          <a href="About">Works</a>
+          <a href="About">Career</a>
         </div>
         <div class="col link-footer">
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
+          <a href="About">Customer Support</a>
+          <a href="About">Delivery Details</a>
+          <a href="About">Terms & Conditions</a>
+          <a href="About">Privacy Policy</a>
         </div>
         <div class="col link-footer">
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
+          <a href="About">Account</a>
+          <a href="About">Manage Deliveries</a>
+          <a href="About">Orders</a>
+          <a href="About">Payments</a>
         </div>
         <div class="col link-footer">
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
-          <a href="About">About</a>
+          <a href="About">Free eBooks</a>
+          <a href="About">Development Tutorial</a>
+          <a href="About">How to - Blog</a>
+          <a href="About">Youtube Playlist</a>
         </div>
       </div>
+      <p style="margin-top: 50px;">IMAGINE &copy;2024, All Rights Reserved</p>
     </div>
   </footer>
 
