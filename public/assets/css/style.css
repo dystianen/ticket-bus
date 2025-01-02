@@ -37,6 +37,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px;
+}
+
+.card-product:hover {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .hero-title {
@@ -98,6 +108,9 @@
 */
 @media (min-width: 768px) and (max-width: 1024px) {
   /* CSS */
+  .subscriber-section {
+    padding: 20px 50px;
+  }
 }
 
 /* 

@@ -29,8 +29,9 @@
       border-color: var(--bs-primary);
     }
 
-    .btn-primary:hover {
-      background-color: #4f4666;
+    .btn-primary:hover,
+    .btn-primary:active {
+      background-color: #4f4666 !important;
       border-color: #4f4666;
     }
 
@@ -39,10 +40,11 @@
       border-color: var(--bs-primary);
     }
 
-    .btn-outline-primary:hover {
+    .btn-outline-primary:hover,
+    .btn-outline-primary:active {
       color: white;
       border-color: var(--bs-primary);
-      background-color: var(--bs-primary);
+      background-color: var(--bs-primary) !important;
     }
 
     .navbar-dark .navbar-nav .nav-link.active,
@@ -72,24 +74,24 @@
 
   <nav class="navbar navbar-expand-lg" style="height: 100px;">
     <div class="container">
-      <a class="navbar-brand text-primary" style="font-weight: 700; font-size: 32px" href="#">IMAGINE</a>
+      <a class="navbar-brand text-primary" style="font-weight: 700; font-size: 32px; text-decoration: none" href="/">IMAGINE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="gap-4 collapse navbar-collapse align-items-center" id="navbarSupportedContent">
         <ul class="mb-2 navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Shop</a>
+            <a class="nav-link" aria-current="page" href="/product">All Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Top Selling</a>
+            <a class="nav-link" href="/top-selling">Top Selling</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-disabled="true">New Arrival</a>
+            <a class="nav-link" href="/new-arrival">New Arrival</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+          <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
         <div class="d-flex">
@@ -107,13 +109,15 @@
   </main>
 
   <footer class="pt-5 bg-primary" style="margin-top: 10rem;">
-    <section class="subscriber-section container gap-3 mb-5 rounded-3 d-flex flex-column flex-md-row justify-content-between align-content-start align-lg-items-center" style="background-color: var(--bs-cream); margin-top: -7rem;">
-      <h1 class="text-primary" style="font-weight: 700;">STAY UP TO DATE ABOUT <br> OUR LATEST OFFERS</h1>
+    <section class="container mb-5 rounded-3" style="background-color: var(--bs-cream); margin-top: -7rem;">
+      <div class="subscriber-section d-flex flex-column flex-md-row justify-content-between align-content-start align-lg-items-center gap-3">
+        <h1 class="text-primary mb-0" style="font-weight: 700;">STAY UP TO DATE ABOUT <br> OUR LATEST OFFERS</h1>
 
-      <div class="subscriber-input d-flex flex-column gap-2">
-        <input type="email" class="form-control rounded-pill" placeholder="Enter your email address" aria-label="email" aria-describedby="basic-addon1">
+        <div class="subscriber-input d-flex flex-column gap-2">
+          <input type="email" class="form-control rounded-pill" placeholder="Enter your email address" aria-label="email" aria-describedby="basic-addon1">
 
-        <button class="btn btn-primary rounded-pill">Subscribe to Newsletter</button>
+          <button class="btn btn-primary rounded-pill">Subscribe to Newsletter</button>
+        </div>
       </div>
     </section>
 
@@ -164,6 +168,12 @@
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
   <script>
     feather.replace();
+
+    function handleSearch(event) {
+      event.preventDefault()
+      const value = document.getElementById("search-input").value;
+      window.location.replace(`/product?search=${value}`)
+    }
   </script>
 </body>
 

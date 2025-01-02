@@ -1,4 +1,4 @@
-<?= $this->extend('./layouts/BaseLayout.php') ?>
+<?= $this->extend('./layouts/base_layout') ?>
 
 <?= $this->section('content') ?>
 
@@ -91,7 +91,7 @@
     </div>
   </div>
 
-  <button class="btn btn-outline-primary">View All</button>
+  <button class="btn btn-outline-primary" onclick="window.location.href= '/new-arrival'">View All</button>
 </section>
 
 <section class="d-flex flex-column align-items-center gap-4" style="margin-top: 100px">
@@ -128,7 +128,7 @@
     </div>
   </div>
 
-  <button class="btn btn-outline-primary">View All</button>
+  <button class="btn btn-outline-primary" onclick="window.location.href= '/top-selling'">View All</button>
 </section>
 
 <section class="style-section gap-3 my-5 rounded-5 d-flex flex-column" style="background-color: var(--bs-cream); width: 100%;">
