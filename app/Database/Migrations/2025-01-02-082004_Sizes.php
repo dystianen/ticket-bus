@@ -22,11 +22,6 @@ class Sizes extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'product_id' => [
-                'type' => 'INT',
-                'constraint' => 10,
-                'unsigned' => true,
-            ],
             'size_name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
@@ -38,6 +33,7 @@ class Sizes extends Migration
             'updated_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => true,
             ],
             'deleted_at' => [
                 'type'    => 'TIMESTAMP',
@@ -47,7 +43,6 @@ class Sizes extends Migration
         ]);
 
         $this->forge->addKey('size_id', true);
-        $this->forge->addForeignKey('product_id', 'products', 'product_id');
         $this->forge->createTable('sizes');
     }
 

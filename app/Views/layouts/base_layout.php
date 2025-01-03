@@ -96,7 +96,21 @@
         </form>
         <div class="d-flex">
           <a href="#" class="btn"><i data-feather="shopping-cart"></i></a>
-          <a href="#" class="btn"><i class="fa-regular fa-circle-user" style="font-size: 30px;"></i></a>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link text-gray-600 d-flex align-items-center gap-2" style="text-decoration: none;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-regular fa-circle-user" style="font-size: 30px;"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <li class="ml-2">
+                    <span class="dropdown-item"><?= session()->get('username') ?></span>
+                  </li>
+                  <li><a class="dropdown-item" style="text-decoration: none;" href="<?php echo base_url(); ?>/logout"><i class="fa-solid fa-power-off mr-2"></i>Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -168,6 +182,14 @@
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
   <script>
     feather.replace();
+
+    $(".success").fadeTo(2000, 500).slideUp(500, function() {
+      $(".success").slideUp(500);
+    });
+
+    $(".failed").fadeTo(2000, 500).slideUp(500, function() {
+      $(".failed").slideUp(500);
+    });
 
     function handleSearch(event) {
       event.preventDefault()

@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-class Categories extends Migration
+class Brands extends Migration
 {
     protected $forge;
     public function __construct()
@@ -16,15 +16,16 @@ class Categories extends Migration
     public function up()
     {
         $this->forge->addField([
-            'category_id' => [
+            'brand_id' => [
                 'type' => 'INT',
                 'constraint' => 10,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'category_name' => [
-                'type' => 'VARCHAR',
-                'constraint' => 100,
+            'brand_name' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',
@@ -42,12 +43,12 @@ class Categories extends Migration
             ],
         ]);
 
-        $this->forge->addKey('category_id', true);
-        $this->forge->createTable('categories');
+        $this->forge->addKey('brand_id', true);
+        $this->forge->createTable('brands');
     }
 
     public function down()
     {
-        $this->forge->dropTable('categories');
+        $this->forge->dropTable('brands');
     }
 }

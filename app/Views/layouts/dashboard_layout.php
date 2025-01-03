@@ -15,10 +15,6 @@
       --bs-cream: #FAF0E6
     }
 
-    body {
-      margin: 0;
-    }
-
     a {
       text-decoration: none;
       color: black;
@@ -39,16 +35,16 @@
       border-color: #4f4666;
     }
 
-
     .btn-outline-primary {
       color: var(--bs-primary);
       border-color: var(--bs-primary);
     }
 
-    .btn-outline-primary:hover {
+    .btn-outline-primary:hover,
+    .btn-outline-primary:active {
       color: white;
       border-color: var(--bs-primary);
-      background-color: var(--bs-primary);
+      background-color: var(--bs-primary) !important;
     }
 
     .navbar-dark .navbar-nav .nav-link.active,
@@ -74,48 +70,35 @@
 </head>
 
 <body>
-  <main>
-    <div class="row" style="width: 100%; height: 100dvh; margin: 0">
-      <div class="col d-flex justify-content-center align-items-center">
-        <form action="<?php echo base_url(); ?>/login/submit" method="post">
-          <div class="d-flex flex-column gap-4">
-            <h1 class="text-primary" style="font-weight: 700">Login!</h1>
-
-            <?php if (session()->getFlashData('failed')) : ?>
-              <div class="alert alert-danger" role="alert">
-                <?php echo session("failed") ?>
-              </div>
-            <?php endif; ?>
-
-            <?php if (session()->getFlashData('success')) : ?>
-              <div class="alert success alert-success" role="alert">
-                <?php echo session("success") ?>
-              </div>
-            <?php endif; ?>
-
-            <div class="card p-4 rounded-lg" style="width: 450px;">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input class="form-control rounded-pill" name="username" id="username" placeholder="Input your username">
-              </div>
-              <div>
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control rounded-pill" name="password" id="password" placeholder="••••••">
-              </div>
-            </div>
-
-            <div>
-              <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%">Sign In</button>
-              <p class="text-primary mt-2">Don't have an account? <a style="font-weight: 700; text-decoration: underline" href="/register">Register now</a></p>
-            </div>
-        </form>
-      </div>
-    </div>
-    <div class="col" style="height: 100%; padding: 0">
-      <img src="/assets/images/style.png" alt="" width="100%" height="100%">
-    </div>
-    </div>
-  </main>
+  <div class="d-flex gap-4" style="width: 100%;">
+    <aside class="bg-primary px-5" style="height: 100dvh; width: 20rem">
+      <nav class="navbar navbar-expand-lg d-flex flex-column align-items-start gap-4">
+        <a class="navbar-brand text-white" style="font-weight: 700; font-size: 32px; text-decoration: none" href="#">IMAGINE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="gap-4 collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="mb-2 navbar-nav mb-lg-0 mx-0 d-flex flex-column">
+            <li class="nav-item">
+              <a class="nav-link text-white" aria-current="page" href="#">Management Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Management User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Management Category</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Management Size</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    <main class="container mt-4">
+      <?= $this->renderSection('content') ?>
+    </main>
+  </div>
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -131,6 +114,12 @@
     $(".failed").fadeTo(2000, 500).slideUp(500, function() {
       $(".failed").slideUp(500);
     });
+
+    function handleSearch(event) {
+      event.preventDefault()
+      const value = document.getElementById("search-input").value;
+      window.location.replace(`/product?search=${value}`)
+    }
   </script>
 </body>
 

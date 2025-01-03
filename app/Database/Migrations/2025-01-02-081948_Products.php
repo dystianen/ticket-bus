@@ -27,6 +27,11 @@ class Products extends Migration
                 'constraint' => 10,
                 'unsigned' => true,
             ],
+            'brand_id' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'unsigned' => true,
+            ],
             'product_name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
@@ -42,6 +47,9 @@ class Products extends Migration
                 'type' => 'INT',
                 'constraint' => 100,
             ],
+            'description' => [
+                'type' => 'TEXT',
+            ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
@@ -49,6 +57,7 @@ class Products extends Migration
             'updated_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => true,
             ],
             'deleted_at' => [
                 'type'    => 'TIMESTAMP',
@@ -59,6 +68,7 @@ class Products extends Migration
 
         $this->forge->addKey('product_id', true);
         $this->forge->addForeignKey('category_id', 'categories', 'category_id');
+        $this->forge->addForeignKey('brand_id', 'brands', 'brand_id');
         $this->forge->createTable('products');
     }
 

@@ -32,6 +32,11 @@ class Cart extends Migration
                 'constraint' => 10,
                 'unsigned' => true,
             ],
+            'size_id' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'unsigned' => true,
+            ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
@@ -39,6 +44,7 @@ class Cart extends Migration
             'updated_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => true,
             ],
             'deleted_at' => [
                 'type'    => 'TIMESTAMP',
@@ -50,6 +56,7 @@ class Cart extends Migration
         $this->forge->addKey('cart_id', true);
         $this->forge->addForeignKey('product_id', 'products', 'product_id');
         $this->forge->addForeignKey('user_id', 'users', 'user_id');
+        $this->forge->addForeignKey('size_id', 'sizes', 'size_id');
         $this->forge->createTable('cart');
     }
 

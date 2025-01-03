@@ -75,36 +75,56 @@
 
 <body>
   <main>
+    <?php if (!empty($errors)): ?>
+      <div class="alert alert-danger" role="alert">
+        <ul>
+          <?php foreach ($errors as $error): ?>
+            <li><?= esc($error) ?></li>
+          <?php endforeach ?>
+        </ul>
+      </div>
+    <?php endif ?>
     <div class="row" style="width: 100%; height: 100dvh; margin: 0">
       <div class="col d-flex justify-content-center align-items-center">
-        <div class="d-flex flex-column gap-4">
-          <h1 class="text-primary" style="font-weight: 700">Register!</h1>
-          <div class="card p-4 rounded-lg" style="width: 450px;">
-            <form>
+        <form action="<?php echo base_url(); ?>/register/submit" method="post">
+          <div class="d-flex flex-column gap-4">
+            <h1 class="text-primary" style="font-weight: 700">Register!</h1>
+            <?php if (session()->getFlashData('failed')) : ?>
+              <div class="alert alert-danger" role="alert">
+                <?php echo session("failed") ?>
+              </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashData('success')) : ?>
+              <div class="alert success alert-success" role="alert">
+                <?php echo session("success") ?>
+              </div>
+            <?php endif; ?>
+            <div class="card p-4 rounded-lg" style="width: 450px;">
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input class="form-control rounded-pill" id="username" placeholder="Input your username">
+                <input class="form-control rounded-pill" name="username" id="username" placeholder="Input your username">
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control rounded-pill" id="email" placeholder="Input your email">
+                <input type="email" class="form-control rounded-pill" name="email" id="email" placeholder="Input your email">
               </div>
               <div>
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control rounded-pill" id="password" placeholder="••••••">
+                <input type="password" class="form-control rounded-pill" name="password" id="password" placeholder="••••••">
               </div>
               <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <input class="form-control rounded-pill" id="address" placeholder="Input your address">
+                <input class="form-control rounded-pill" id="address" id="address" placeholder="Input your address">
               </div>
-            </form>
-          </div>
+            </div>
 
-          <div>
-            <button class="btn btn-primary rounded-pill" style="width: 100%">Sign Up</button>
-            <p class="text-primary mt-2">Have an account? <a style="font-weight: 700; text-decoration: underline" href="/login">Login now</a></p>
+            <div>
+              <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%">Sign Up</button>
+              <p class="text-primary mt-2">Have an account? <a style="font-weight: 700; text-decoration: underline" href="/login">Login now</a></p>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
       <div class="col" style="height: 100%; padding: 0">
         <img src="/assets/images/style.png" alt="" width="100%" height="100%">
@@ -118,6 +138,14 @@
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
   <script>
     feather.replace();
+
+    $(".success").fadeTo(2000, 500).slideUp(500, function() {
+      $(".success").slideUp(500);
+    });
+
+    $(".failed").fadeTo(2000, 500).slideUp(500, function() {
+      $(".failed").slideUp(500);
+    });
   </script>
 </body>
 

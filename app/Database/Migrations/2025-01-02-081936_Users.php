@@ -26,12 +26,21 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
             'password' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
             'address' => [
                 'type' => 'TEXT',
+            ],
+            'role' => [
+                'type' => 'VARCHAR',
+                'constraint' => 20,
+                'null' => true,
             ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',
@@ -40,6 +49,7 @@ class Users extends Migration
             'updated_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => true,
             ],
             'deleted_at' => [
                 'type'    => 'TIMESTAMP',

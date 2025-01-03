@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-class Images extends Migration
+class Files extends Migration
 {
     protected $forge;
     public function __construct()
@@ -16,7 +16,7 @@ class Images extends Migration
     public function up()
     {
         $this->forge->addField([
-            'image_id' => [
+            'file_id' => [
                 'type' => 'INT',
                 'constraint' => 10,
                 'unsigned' => true,
@@ -27,6 +27,18 @@ class Images extends Migration
                 'constraint' => 10,
                 'unsigned' => true,
             ],
+            'file_path' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'file_name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'type' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
             'created_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
@@ -34,6 +46,7 @@ class Images extends Migration
             'updated_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'null' => true,
             ],
             'deleted_at' => [
                 'type'    => 'TIMESTAMP',
@@ -42,13 +55,13 @@ class Images extends Migration
             ],
         ]);
 
-        $this->forge->addKey('image_id', true);
+        $this->forge->addKey('file_id', true);
         $this->forge->addForeignKey('product_id', 'products', 'product_id');
-        $this->forge->createTable('images');
+        $this->forge->createTable('files');
     }
 
     public function down()
     {
-        $this->forge->dropTable('images');
+        $this->forge->dropTable('files');
     }
 }
