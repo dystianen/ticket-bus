@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use CodeIgniter\Database\RawSql;
 
-class Brands extends Migration
+class Payments extends Migration
 {
     protected $forge;
     public function __construct()
@@ -16,13 +16,22 @@ class Brands extends Migration
     public function up()
     {
         $this->forge->addField([
-            'brand_id' => [
+            'payment_id' => [
                 'type' => 'INT',
                 'constraint' => 10,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'brand_name' => [
+            'user_id' => [
+                'type' => 'INT',
+                'constraint' => 10,
+                'unsigned' => true,
+            ],
+            'total' => [
+                'type' => 'INT',
+                'constraint' => 100,
+            ],
+            'proof_of_transfer' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
@@ -42,12 +51,13 @@ class Brands extends Migration
             ],
         ]);
 
-        $this->forge->addKey('brand_id', true);
-        $this->forge->createTable('brands');
+        $this->forge->addKey('payment_id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'user_id');
+        $this->forge->createTable('payments');
     }
 
     public function down()
     {
-        $this->forge->dropTable('brands');
+        $this->forge->dropTable('payments');
     }
 }

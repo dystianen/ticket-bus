@@ -26,6 +26,7 @@ class Products extends Migration
                 'type' => 'INT',
                 'constraint' => 10,
                 'unsigned' => true,
+                'null' => true,
             ],
             'brand_id' => [
                 'type' => 'INT',

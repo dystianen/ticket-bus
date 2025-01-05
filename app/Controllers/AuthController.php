@@ -38,7 +38,7 @@ class AuthController extends BaseController
                 $session->set($ses_data);
 
                 if ($data['role'] == 'admin') {
-                    return redirect()->to(base_url('/admin'));
+                    return redirect()->to(base_url('/admin/management-product'));
                 } else {
                     return redirect()->to(base_url('/'));
                 }

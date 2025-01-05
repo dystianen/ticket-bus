@@ -37,6 +37,10 @@ class Cart extends Migration
                 'constraint' => 10,
                 'unsigned' => true,
             ],
+            'status' => array(
+                'type' => "ENUM('cart', 'waiting_payment', 'checking_payment', 'success_payment', 'under_packaging', 'waiting_for_courier', 'sent', 'finished', 'canceled')",
+                'null' => true,
+            ),
             'created_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),

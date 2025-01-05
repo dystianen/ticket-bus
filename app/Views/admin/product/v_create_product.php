@@ -18,6 +18,17 @@
               <?php endforeach; ?>
             </select>
           </div>
+          <div class="col form-group mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <select name="brand_id" class="form-control form-select rounded-pill" id="brand">
+              <option value="">--please select--</option>
+              <?php foreach ($brands as $b) : ?>
+                <option value="<?= $b['brand_id'] ?>">
+                  <?= $b['brand_name'] ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
           <div class="col mb-3">
             <label for="product_name" class="form-label">Product Name</label>
             <input class="form-control rounded-pill" name="product_name" id="product_name" placeholder="Input product name">
@@ -38,6 +49,7 @@
             <label for="files" class="form-label">Files</label>
             <input type="file" multiple class="form-control rounded-pill" name="files[]" id="files">
           </div>
+
         </div>
       </div>
 

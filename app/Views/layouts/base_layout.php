@@ -6,7 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>IMAGINE!</title>
   <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>IMAGINE!</title>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>IMAGINE!</title>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     :root {
@@ -18,10 +34,6 @@
     a {
       text-decoration: none;
       color: black;
-    }
-
-    a:hover {
-      text-decoration: underline;
     }
 
     .btn-primary {
@@ -95,7 +107,12 @@
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
         <div class="d-flex">
-          <a href="#" class="btn"><i data-feather="shopping-cart"></i></a>
+          <a href="/cart" class="btn position-relative">
+            <i data-feather="shopping-cart"></i>
+            <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger">
+              0
+            </span>
+          </a>
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
@@ -106,14 +123,14 @@
                   <li class="ml-2">
                     <span class="dropdown-item"><?= session()->get('username') ?></span>
                   </li>
-                  <li><a class="dropdown-item" style="text-decoration: none;" href="<?php echo base_url(); ?>/logout"><i class="fa-solid fa-power-off mr-2"></i>Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+                  <li><a class=" dropdown-item" style="text-decoration: none;" href="<?php echo base_url(); ?>/logout"><i class="fa-solid fa-power-off mr-2"></i>Logout</a></li>
+  </ul>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  </div>
   </nav>
 
   <main class="container">
@@ -196,7 +213,50 @@
       const value = document.getElementById("search-input").value;
       window.location.replace(`/product?search=${value}`)
     }
+
+    async function fetchCart() {
+      try {
+        const response = await fetch('<?= base_url() ?>cart/get');
+        const cartItems = await response.json();
+
+        // Update cart icon badge count
+        const cartBadge = document.getElementById('cart-badge');
+        cartBadge.innerText = cartItems.length;
+      } catch (error) {
+        console.error('Failed to fetch cart:', error);
+      }
+    }
+
+    let checkPaymentInterval; // Declare interval variable
+
+    async function checkPayment() {
+      try {
+        const response = await fetch('<?= base_url() ?>check-payment');
+        const cartItems = await response.json();
+
+        // Update cart icon badge count
+        const cartBadge = document.getElementById('cart-badge');
+        cartBadge.innerText = cartItems.length;
+
+        // Check if all items have status 'success_payment'
+        const isSuccess = cartItems.every(item => item.status === 'success_payment');
+
+        // Stop interval when all items have 'success_payment'
+        if (isSuccess) {
+          clearInterval(checkPaymentInterval); // Clear the interval
+          console.log('Payment is successful for all items. Stopping checks.');
+        }
+      } catch (error) {
+        console.error('Failed to fetch cart:', error);
+      }
+    }
+
+    // Start interval to check payment every 5 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      checkPayment(); // Initial check on page load
+      checkPaymentInterval = setInterval(checkPayment, 5000); // Repeat check every 5 seconds
+    });
   </script>
-</body>
+  </body>
 
 </html>

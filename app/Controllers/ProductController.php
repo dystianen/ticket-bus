@@ -3,21 +3,61 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\BrandModel;
 use App\Models\CategoryModel;
 use App\Models\FileModel;
 use App\Models\ProductModel;
+use App\Models\SizeModel;
 use Config\Services;
 
 class ProductController extends BaseController
 {
     public function index(): string
     {
-        return view('v_product');
+        $productModel = new ProductModel();
+        $products = $productModel->findAll();
+
+        $fileModel = new FileModel();
+
+        foreach ($products as &$product) {
+            $image = $fileModel
+                ->where('product_id', $product['product_id'])
+                ->first();
+
+            $product['file_path'] = $image['file_path'];
+        }
+
+        $data = [
+            "products" => $products
+        ];
+
+        return view('customer/product/v_product', $data);
     }
 
-    public function detail(): string
+
+    public function detail($productId): string
     {
-        return view('v_product_detail');
+        $productModel = new ProductModel();
+        $product = $productModel
+            ->join("brands", "brands.brand_id = products.brand_id")
+            ->where("product_id", $productId)
+            ->first();
+
+        $fileModel = new FileModel();
+        $images = $fileModel
+            ->where('product_id', $productId)
+            ->findAll();
+
+        $product['images'] = array_column($images, 'file_path');
+
+        $sizeModel = new SizeModel();
+        $sizes = $sizeModel->findAll();
+
+        $data = [
+            "product" => $product,
+            "sizes" => $sizes
+        ];
+        return view('customer/product/v_product_detail', $data);
     }
 
     public function topSelling(): string
@@ -38,7 +78,7 @@ class ProductController extends BaseController
             ->findAll();
 
         $data = [
-            "products" => $product
+            "products" => $product,
         ];
         return view('admin/product/v_management_product', $data);
     }
@@ -48,8 +88,12 @@ class ProductController extends BaseController
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
 
+        $brandModel = new BrandModel();
+        $brands = $brandModel->findAll();
+
         $data = [
-            "categories" => $categories
+            "categories" => $categories,
+            "brands" => $brands
         ];
 
         return view('admin/product/v_create_product', $data);
@@ -60,7 +104,7 @@ class ProductController extends BaseController
         helper(['form']);
         $productModel = new ProductModel();
         $rules = [
-            'category_id' => 'required',
+            'brand_id' => 'required',
             'product_name' => 'required|min_length[4]|max_length[100]',
             'description' => 'required',
             'rating' => 'required',
@@ -71,12 +115,15 @@ class ProductController extends BaseController
             // Simpan data produk
             $data = [
                 'category_id' => $this->request->getVar('category_id'),
+                'brand_id' => $this->request->getVar('brand_id'),
                 'product_name' => $this->request->getVar('product_name'),
                 'description' =>  $this->request->getVar('description'),
                 'rating' => $this->request->getVar('rating'),
                 'price' => $this->request->getVar('price'),
                 'deleted_at' => null,
             ];
+
+            // dd($data);
 
             $productModel->save($data);
 
@@ -91,7 +138,7 @@ class ProductController extends BaseController
                 foreach ($files as $file) {
                     if ($file->isValid() && !$file->hasMoved()) {
                         $newName = $file->getRandomName();
-                        $file->move('/assets/images/', $newName);
+                        $file->move('assets/images/', $newName);
 
                         // Simpan data file dengan product_id
                         $data = [

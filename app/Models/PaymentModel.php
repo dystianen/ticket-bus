@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CartModel extends Model
+class PaymentModel extends Model
 {
-    protected $table            = 'cart';
-    protected $primaryKey       = 'cart_id';
+    protected $table            = 'payments';
+    protected $primaryKey       = 'payment_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['product_id', 'user_id', 'size_id', 'status', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields    = ['user_id', 'total', 'proof_of_transfer', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
 

@@ -10,6 +10,10 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
+                'category_name'  => 'all',
+                'deleted_at' => null,
+            ],
+            [
                 'category_name'  => 'top_selling',
                 'deleted_at' => null,
             ],
