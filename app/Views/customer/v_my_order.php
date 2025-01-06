@@ -17,7 +17,7 @@
     <a class="nav-link" data-status="finished" href="#">Finished</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-status="cancelled" href="#">Canceled</a>
+    <a class="nav-link" data-status="cancelled" href="#">Cancelled</a>
   </li>
 </ul>
 
@@ -54,7 +54,7 @@
 
       contentContainer.innerHTML = ''; // Clear previous content
       orders.forEach(order => {
-        const buttonHtml = getButtonHtml(order.id, status); // Get dynamic button HTML
+        const buttonHtml = getButtonHtml(order.cart_id, status); // Get dynamic button HTML
 
         const orderCard = `
         <div class="d-flex justify-content-between p-3 mb-3 rounded-4" style="border: 1px solid lightgray">
@@ -90,11 +90,11 @@
     }
 
     // Handle Cancel Order
-    async function cancelOrder(orderId) {
+    window.cancelOrder = async function(orderId) { // Make the function globally accessible
       if (!confirm('Are you sure you want to cancel this order?')) return;
 
       try {
-        const response = await fetch(`<?= base_url() ?>/cancel-order/${orderId}`, {
+        const response = await fetch(`<?= base_url() ?>cancel-order/${orderId}`, {
           method: 'POST',
         });
         if (!response.ok) throw new Error('Failed to cancel order.');
@@ -108,22 +108,32 @@
     }
 
     // Handle Finish Order
-    async function finishOrder(orderId) {
+    window.finishOrder = async function(orderId) { // Make the function globally accessible
       if (!confirm('Are you sure you want to finish this order?')) return;
 
       try {
-        const response = await fetch(`<?= base_url() ?>/finish-order/${orderId}`, {
+        const response = await fetch(`<?= base_url() ?>finish-order/${orderId}`, {
           method: 'POST',
         });
         if (!response.ok) throw new Error('Failed to finish order.');
 
         alert('Order marked as finished.');
-        fetchOrders('sent'); // Refresh data
+
+        // After the order is finished, switch to the 'finished' tab
+        const finishedTab = document.querySelector('#order-tabs .nav-link[data-status="finished"]');
+        if (finishedTab) {
+          tabs.forEach(t => t.classList.remove('active')); // Remove active class from all tabs
+          finishedTab.classList.add('active'); // Set active class on the 'finished' tab
+          fetchOrders('finished'); // Fetch orders for the 'finished' status
+        }
+
       } catch (error) {
         console.error('Error finishing order:', error);
         alert('Failed to finish order.');
       }
     }
+
+
 
     // Handle tab clicks
     tabs.forEach(tab => {

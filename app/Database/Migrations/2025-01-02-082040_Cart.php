@@ -38,7 +38,7 @@ class Cart extends Migration
                 'unsigned' => true,
             ],
             'status' => array(
-                'type' => "ENUM('cart', 'waiting_payment', 'checking_payment', 'success_payment', 'under_packaging', 'waiting_for_courier', 'sent', 'finished', 'canceled')",
+                'type' => "ENUM('cart', 'waiting_payment', 'checking_payment', 'success_payment', 'under_packaging', 'waiting_for_courier', 'sent', 'finished', 'cancelled')",
                 'null' => true,
             ),
             'created_at' => [

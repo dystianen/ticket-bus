@@ -92,13 +92,13 @@
       <div class="gap-4 collapse navbar-collapse align-items-center" id="navbarSupportedContent">
         <ul class="mb-2 navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/product">All Product</a>
+            <a class="nav-link" aria-current="page" href="/product" style="font-weight: 500;">All Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/top-selling">Top Selling</a>
+            <a class="nav-link" href="/top-selling" style="font-weight: 500;">Top Selling</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/new-arrival">New Arrival</a>
+            <a class="nav-link" href="/new-arrival" style="font-weight: 500;">New Arrival</a>
           </li>
         </ul>
         <form class="d-flex" role="search" onsubmit="handleSearch(event)">
@@ -121,12 +121,12 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li>
-                      <a class="dropdown-item" style="text-decoration: none;" href="<?= base_url(); ?>/logout">
-                        <i class="fa-solid fa-power-off mr-2"></i> <span>My Order</span>
+                      <a class="dropdown-item" href="<?= base_url(); ?>my-order">
+                        <i class="fa-solid fa-list mr-2"></i> <span>My Order</span>
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" style="text-decoration: none;" href="<?= base_url(); ?>/logout">
+                      <a class="dropdown-item" href="<?= base_url(); ?>logout">
                         <i class="fa-solid fa-power-off mr-2"></i> <span>Logout</span>
                       </a>
                     </li>

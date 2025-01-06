@@ -137,4 +137,44 @@ class OrderController extends BaseController
 
         return $this->response->setJSON($carts);
     }
+
+    public function cancelOrder($cartId)
+    {
+        $cartModel = new CartModel();
+
+        // Update the order status to 'canceled'
+        $updated = $cartModel->update($cartId, ['status' => 'cancelled']);
+
+        if ($updated) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Order has been canceled',
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to cancel order',
+            ]);
+        }
+    }
+
+    public function finishOrder($cartId)
+    {
+        $cartModel = new CartModel();
+
+        // Update the order status to 'finished'
+        $updated = $cartModel->update($cartId, ['status' => 'finished']);
+
+        if ($updated) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Order has been finished',
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Failed to finish order',
+            ]);
+        }
+    }
 }

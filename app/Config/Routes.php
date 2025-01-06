@@ -44,6 +44,8 @@ $routes->group('/', function ($routes) {
   $routes->get('sent', 'OrderController::getSent');
   $routes->get('finished', 'OrderController::getFinished');
   $routes->get('cancelled', 'OrderController::getCancelled');
+  $routes->post('cancel-order/(:num)', 'OrderController::cancelOrder/$1');
+  $routes->post('finish-order/(:num)', 'OrderController::finishOrder/$1');
 });
 
 $routes->group('/admin', function ($routes) {
