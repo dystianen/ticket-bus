@@ -20,14 +20,18 @@ class AuthController extends BaseController
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
+        // Check if the login input is an email or username and query accordingly
         $data = $userModel
-            ->where('username', $username)->first();
+            ->where('username', $username)
+            ->orWhere('email', $username)
+            ->first();
 
         $redirectTo = $this->request->getGet('redirectTo');
 
         if ($data) {
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
+
             if ($authenticatePassword) {
                 $ses_data = [
                     'user_id' => $data['user_id'],
@@ -53,10 +57,11 @@ class AuthController extends BaseController
                 return redirect()->to(base_url('/login'));
             }
         } else {
-            $session->setFlashdata('failed', 'Email does not exist.');
+            $session->setFlashdata('failed', 'Email or username does not exist.');
             return redirect()->to(base_url('/login'));
         }
     }
+
 
     public function registerView()
     {

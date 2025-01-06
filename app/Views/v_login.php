@@ -95,7 +95,7 @@
 
             <div class="card p-4 rounded-lg" style="width: 450px;">
               <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
+                <label for="username" class="form-label">Email/Username</label>
                 <input class="form-control rounded-pill" name="username" id="username" placeholder="Input your username">
               </div>
               <div>
