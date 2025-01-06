@@ -233,8 +233,6 @@ class ProductController extends BaseController
                 'deleted_at' => null,
             ];
 
-            // dd($data);
-
             $productModel->save($data);
 
             // Ambil product_id yang baru saja disimpan
@@ -255,7 +253,8 @@ class ProductController extends BaseController
                             'product_id' => $productId, // Menggunakan product_id yang benar
                             'file_name' => $file->getClientName(),
                             'file_path' => '/assets/images/' . $newName,
-                            'type' => $file->getClientExtension()
+                            'type' => $file->getClientExtension(),
+                            'deleted_at' => null,
                         ];
                         $imageModel = new FileModel();
                         $imageModel->save($data);

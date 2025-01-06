@@ -57,77 +57,53 @@
 </section>
 
 <section class="d-flex flex-column align-items-center gap-4" style="margin-top: 100px">
-  <h2 class="text-primary" style="font-weight: 700;">NEW ARRIVALS</h2>
-
-  <div class="row gap-5 mt-5">
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-  </div>
-
-  <button class="btn btn-outline-primary" onclick="window.location.href= '/new-arrival'">View All</button>
-</section>
-
-<section class="d-flex flex-column align-items-center gap-4" style="margin-top: 100px">
   <h2 class="text-primary" style="font-weight: 700;">TOP SELLING</h2>
 
-  <div class="row gap-5 mt-5">
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
-    <div class="col card-product">
-      <img src="/assets/images/converse-1.png" alt="">
-      <div>
-        <a href="#" style="font-weight: 700;">Nike Air Max</a>
-        <h4 style="font-weight: 700;">$120</h4>
-      </div>
-    </div>
+  <div class="row gap-5 mt-5" style="width: 100%;">
+    <?php foreach ($topSelling as $p): ?>
+      <a href="<?php base_url() ?>product/<?= $p['product_id'] ?>" class="col-3 card-product">
+        <img src="<?= $p['file_path'] ?>" alt="">
+        <div class="d-flex flex-column">
+          <h5 style="font-weight: 700; color: #e21936; text-transform: uppercase"><?= $p['brand_name'] ?></h5>
+          <h5 style="font-weight: 700;"><?= $p['product_name'] ?></h5>
+          <div class="d-flex gap-2">
+            <div class="d-flex gap-1">
+              <img src="/assets/images/star.svg" alt="star" width="20" height="20">
+              <span style="font-weight: 700;"><?= $p['rating'] ?></span>
+            </div>
+            <span style="font-weight: 700;">Rp <?= number_format($p['price'], 0, ',', '.') ?></span>
+          </div>
+        </div>
+      </a>
+    <?php endforeach; ?>
   </div>
 
   <button class="btn btn-outline-primary" onclick="window.location.href= '/top-selling'">View All</button>
+</section>
+
+<section class="d-flex flex-column align-items-center gap-4" style="margin-top: 100px">
+  <h2 class="text-primary" style="font-weight: 700;">NEW ARRIVALS</h2>
+
+  <div class="row gap-5 mt-5" style="width: 100%;">
+    <?php foreach ($newArrival as $p): ?>
+      <a href="<?php base_url() ?>product/<?= $p['product_id'] ?>" class="col-3 card-product">
+        <img src="<?= $p['file_path'] ?>" alt="">
+        <div class="d-flex flex-column">
+          <h5 style="font-weight: 700; color: #e21936; text-transform: uppercase"><?= $p['brand_name'] ?></h5>
+          <h5 style="font-weight: 700;"><?= $p['product_name'] ?></h5>
+          <div class="d-flex gap-2">
+            <div class="d-flex gap-1">
+              <img src="/assets/images/star.svg" alt="star" width="20" height="20">
+              <span style="font-weight: 700;"><?= $p['rating'] ?></span>
+            </div>
+            <span style="font-weight: 700;">Rp <?= number_format($p['price'], 0, ',', '.') ?></span>
+          </div>
+        </div>
+      </a>
+    <?php endforeach; ?>
+  </div>
+
+  <button class="btn btn-outline-primary" onclick="window.location.href= '/new-arrival'">View All</button>
 </section>
 
 <section class="style-section gap-3 my-5 rounded-5 d-flex flex-column" style="background-color: var(--bs-cream); width: 100%;">
