@@ -114,12 +114,6 @@
     $(".failed").fadeTo(2000, 500).slideUp(500, function() {
       $(".failed").slideUp(500);
     });
-
-    function handleSearch(event) {
-      event.preventDefault()
-      const value = document.getElementById("search-input").value;
-      window.location.replace(`/product?search=${value}`)
-    }
   </script>
 </body>
 

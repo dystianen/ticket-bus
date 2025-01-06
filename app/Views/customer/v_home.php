@@ -1,7 +1,6 @@
 <?= $this->extend('./layouts/base_layout') ?>
 
 <?= $this->section('content') ?>
-
 <section class="hero-section d-flex align-items-center">
   <div class="row align-items-center" style="height: 100%">
     <div class="gap-4 flex-column col-12 col-md-7 d-flex">

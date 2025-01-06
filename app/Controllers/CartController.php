@@ -61,7 +61,13 @@ class CartController extends BaseController
         $cartModel = new CartModel();
         $session = session();
 
+        // Check if the user is logged in
         $userId = $session->get('user_id');
+
+        // Redirect to login if the user is not logged in
+        if (!$userId) {
+            return redirect()->to(base_url('/login?redirectTo=/product/' . $productId));
+        }
 
         // Get input values from the form
         $sizeId = $this->request->getPost('size_id');
@@ -69,8 +75,10 @@ class CartController extends BaseController
         // Validate the input
         if (!$sizeId) {
             $session->setFlashdata('error', 'Please select a size.');
+            return redirect()->back();
         }
 
+        // Prepare cart item data
         $cartItem = [
             'product_id' => $productId,
             'size_id' => $sizeId,
@@ -79,12 +87,18 @@ class CartController extends BaseController
             'deleted_at' => null
         ];
 
-        $cartModel->save($cartItem);
+        // Save the item to the cart
+        if ($cartModel->save($cartItem)) {
+            // Redirect with success message if save succeeds
+            $session->setFlashdata('success', 'Item added to cart!');
+        } else {
+            // Redirect with error message if save fails
+            $session->setFlashdata('error', 'Failed to add item to cart. Please try again.');
+        }
 
-        // Redirect with success message
-        $session->setFlashdata('success', 'Item added to cart!');
         return redirect()->back();
     }
+
 
     public function updateStatus($currentStatus, $newStatus)
     {

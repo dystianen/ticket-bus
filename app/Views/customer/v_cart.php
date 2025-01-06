@@ -1,19 +1,28 @@
 <?= $this->extend('./layouts/base_layout') ?>
 
 <?= $this->section('content') ?>
-<div class="container">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Cart</li>
-    </ol>
-  </nav>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+    <li class="breadcrumb-item"><a href="/product">All Product</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+  </ol>
+</nav>
 
-  <h3>Your Cart</h3>
+<h3 class="mb-4">Your Cart</h3>
 
-  <div class="row">
-    <div class="col-8">
-      <div class="d-flex flex-column gap-2">
+<div class="row">
+  <div class="col-8">
+    <div class="d-flex flex-column gap-2">
+      <?php if (empty($carts)): ?>
+        <!-- Empty Cart State -->
+        <div class="card p-3">
+          <div class="d-flex justify-content-center align-items-center text-center">
+            <h5>Your cart is empty. Please add some products to your cart.</h5>
+          </div>
+        </div>
+      <?php else: ?>
+        <!-- Render Cart Items -->
         <?php foreach ($carts as $c): ?>
           <div class="card d-flex justify-content-between p-3">
             <div class="d-flex align-content-center gap-0">
@@ -26,25 +35,27 @@
             </div>
           </div>
         <?php endforeach; ?>
-      </div>
+      <?php endif; ?>
     </div>
-    <div class="col">
-      <form action="/checkout" method="POST">
-        <div class="card p-3 d-flex flex-column gap-3">
-          <h5>Order Summary</h5>
-          <div class="d-flex justify-content-between">
-            <span>Total</span>
-            <span>Rp <?= number_format($totalPrice, 0, ',', '.') ?></span>
-          </div>
+  </div>
 
-          <!-- Hidden input for total price -->
-          <input type="hidden" name="total_price" value="<?= $totalPrice ?>">
-
-          <!-- Payment Button -->
-          <button type="submit" class="btn btn-primary rounded-pill">Payment</button>
+  <!-- Order Summary -->
+  <div class="col">
+    <form action="/checkout" method="POST">
+      <div class="card p-3 d-flex flex-column gap-3">
+        <h5>Order Summary</h5>
+        <div class="d-flex justify-content-between">
+          <span>Total</span>
+          <span>Rp <?= number_format($totalPrice, 0, ',', '.') ?></span>
         </div>
-      </form>
-    </div>
+
+        <!-- Hidden input for total price -->
+        <input type="hidden" name="total_price" value="<?= $totalPrice ?>">
+
+        <!-- Payment Button -->
+        <button type="submit" class="btn btn-primary rounded-pill" <?= empty($carts) ? 'disabled' : '' ?>>Payment</button>
+      </div>
+    </form>
   </div>
 </div>
 <?= $this->endSection() ?>

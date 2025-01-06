@@ -31,13 +31,26 @@
       border-color: #4f4666;
     }
 
+    .nav-link {
+      color: var(--bs-primary);
+    }
+
+    .nav-link:hover {
+      color: #4f4666;
+    }
+
     .btn-outline-primary {
       color: var(--bs-primary) !important;
       border-color: var(--bs-primary) !important;
     }
 
     .btn-outline-primary:hover,
-    .btn-outline-primary:active {
+    .btn-outline-primary:active,
+    .btn-check:checked+.btn,
+    .btn.active,
+    .btn.show,
+    .btn:first-child:active,
+    :not(.btn-check)+.btn:active {
       color: white !important;
       border-color: var(--bs-primary) !important;
       background-color: var(--bs-primary) !important;
@@ -66,7 +79,9 @@
 </head>
 
 <body>
-  <header class="pt-1 pb-2 px-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white text-decoration-underline" href="/signup"> Sign Up Now</a></header>
+  <?php if (!session()->get('is_logged_in')): ?>
+    <header class="pt-1 pb-2 px-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white text-decoration-underline" href="/signup"> Sign Up Now</a></header>
+  <?php endif; ?>
 
   <nav class="navbar navbar-expand-lg" style="height: 100px;">
     <div class="container">
@@ -91,38 +106,44 @@
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
         <div class="d-flex">
-          <a href="/cart" class="btn position-relative">
-            <i data-feather="shopping-cart"></i>
-            <?php if (json_encode(session()->get('is_logged_in'))): ?>
+          <?php if (session()->get('is_logged_in')): ?>
+            <a href="/cart" class="btn position-relative mt-1">
+              <i data-feather="shopping-cart"></i>
               <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger" style="visibility: hidden;">
                 0
               </span>
-            <?php endif; ?>
-          </a>
-          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link text-gray-600 d-flex align-items-center gap-2" style="text-decoration: none;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="fa-regular fa-circle-user" style="font-size: 30px;"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <li class="ml-2">
-                    <span class="dropdown-item"><?= session()->get('username') ?></span>
-                  </li>
-                  <li><a class="dropdown-item" style="text-decoration: none;" href="<?php echo base_url(); ?>/logout"><i class="fa-solid fa-power-off mr-2"></i>Logout</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-gray-600 d-flex align-items-center gap-1" style="text-decoration: none;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i data-feather="user"></i> <span style="font-size: 20px;"><?= session()->get('username') ?></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" style="text-decoration: none;" href="<?= base_url(); ?>/logout">
+                        <i class="fa-solid fa-power-off mr-2"></i> <span>My Order</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" style="text-decoration: none;" href="<?= base_url(); ?>/logout">
+                        <i class="fa-solid fa-power-off mr-2"></i> <span>Logout</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <a href="/login" class="btn btn-outline-primary rounded-pill">Login/Register</a>
+          <?php endif; ?>
         </div>
       </div>
     </div>
   </nav>
 
   <main class="container">
-    <article>
-      <?= $this->renderSection('content') ?>
-    </article>
+    <?= $this->renderSection('content') ?>
   </main>
 
   <footer class="pt-5 bg-primary" style="margin-top: 10rem;">
@@ -198,9 +219,9 @@
       event.preventDefault()
       const value = document.getElementById("search-input").value;
       if (window.location.pathname === '/') {
-        window.location.replace(`/product?search=${value}`)
+        window.location.href = `/product?search=${value}`;
       } else {
-        window.location.replace(`?search=${value}`)
+        window.location.href = `?search=${value}`;
       }
     }
 

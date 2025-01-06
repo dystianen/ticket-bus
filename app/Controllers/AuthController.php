@@ -23,6 +23,8 @@ class AuthController extends BaseController
         $data = $userModel
             ->where('username', $username)->first();
 
+        $redirectTo = $this->request->getGet('redirectTo');
+
         if ($data) {
             $pass = $data['password'];
             $authenticatePassword = password_verify($password, $pass);
@@ -40,7 +42,11 @@ class AuthController extends BaseController
                 if ($data['role'] == 'admin') {
                     return redirect()->to(base_url('/admin/management-product'));
                 } else {
-                    return redirect()->to(base_url('/'));
+                    if ($redirectTo) {
+                        return redirect()->to(base_url($redirectTo));
+                    } else {
+                        return redirect()->to(base_url('/'));
+                    }
                 }
             } else {
                 $session->setFlashdata('failed', 'Password is incorrect.');

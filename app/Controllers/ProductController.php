@@ -27,7 +27,7 @@ class ProductController extends BaseController
 
         // Filter by brand
         if ($brand) {
-            $query->where('brand', $brand);
+            $query->where('brand_name', $brand);
         }
 
         // Filter by product_name or brand_name
