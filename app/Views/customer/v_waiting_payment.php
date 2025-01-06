@@ -1,4 +1,4 @@
-<?= $this->extend('../layouts/base_layout') ?>
+<?= $this->extend('./layouts/base_layout') ?>
 
 <?= $this->section('content') ?>
 <div class="container">

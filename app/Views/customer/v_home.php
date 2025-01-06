@@ -7,7 +7,7 @@
     <div class="gap-4 flex-column col-12 col-md-7 d-flex">
       <h1 class="text-primary hero-title" style="font-weight: 700">FIND SHOES <br> THAT MATCHES <br> YOUR STYLE</h1>
       <p>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-      <button class="px-5 rounded-pill btn btn-primary btn-lg" style="width: max-content;">Shop Now</button>
+      <a href="/product" class="px-5 rounded-pill btn btn-primary btn-lg" style="width: max-content;">Shop Now</a>
 
       <div class="row">
         <div class="col">

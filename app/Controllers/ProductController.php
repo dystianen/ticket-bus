@@ -15,25 +15,48 @@ class ProductController extends BaseController
     public function index(): string
     {
         $productModel = new ProductModel();
-        $products = $productModel->findAll();
-
         $fileModel = new FileModel();
 
+        // Get query parameters
+        $brand = $this->request->getGet('brand');
+        $search = $this->request->getGet('search'); // Search query
+
+        // Build query with filters
+        $query = $productModel
+            ->join("brands", "brands.brand_id = products.brand_id");
+
+        // Filter by brand
+        if ($brand) {
+            $query->where('brand', $brand);
+        }
+
+        // Filter by product_name or brand_name
+        if ($search) {
+            $query->groupStart() // Start grouping OR conditions
+                ->like('product_name', $search) // Match product_name
+                ->orLike('brand_name', $search) // Match brand_name
+                ->groupEnd(); // End grouping
+        }
+
+        // Fetch filtered products
+        $products = $query->findAll();
+
+        // Attach file path to each product
         foreach ($products as &$product) {
             $image = $fileModel
                 ->where('product_id', $product['product_id'])
                 ->first();
 
-            $product['file_path'] = $image['file_path'];
+            $product['file_path'] = $image['file_path'] ?? null; // Handle missing images
         }
 
+        // Prepare data for the view
         $data = [
             "products" => $products
         ];
 
         return view('customer/product/v_product', $data);
     }
-
 
     public function detail($productId): string
     {
@@ -62,13 +85,100 @@ class ProductController extends BaseController
 
     public function topSelling(): string
     {
-        return view('v_top_selling');
+        $productModel = new ProductModel();
+        $fileModel = new FileModel();
+
+        // Get 'brand' and 'search' parameters from query string
+        $brand = $this->request->getGet('brand');
+        $search = $this->request->getGet('search'); // Get search query
+
+        // Build query with filters
+        $query = $productModel
+            ->join('categories', 'categories.category_id = products.category_id')
+            ->join("brands", "brands.brand_id = products.brand_id")
+            ->where('category_name', 'top_selling');
+
+        // Filter by brand
+        if ($brand) {
+            $query->where('brand_name', $brand);
+        }
+
+        // Filter by product_name or brand_name
+        if ($search) {
+            $query->groupStart() // Start grouping OR conditions
+                ->like('product_name', $search) // Match product_name
+                ->orLike('brand_name', $search) // Match brand_name
+                ->groupEnd(); // End grouping
+        }
+
+        // Fetch filtered products
+        $products = $query->findAll();
+
+        // Attach file path to each product
+        foreach ($products as &$product) {
+            $image = $fileModel
+                ->where('product_id', $product['product_id'])
+                ->first();
+
+            $product['file_path'] = $image['file_path'] ?? null; // Handle missing images
+        }
+
+        // Prepare data for the view
+        $data = [
+            "products" => $products
+        ];
+
+        return view('customer/v_top_selling', $data);
     }
 
     public function newArrival(): string
     {
-        return view('v_new_arrival');
+        $productModel = new ProductModel();
+        $fileModel = new FileModel();
+
+        // Get 'brand' and 'search' parameters from query string
+        $brand = $this->request->getGet('brand');
+        $search = $this->request->getGet('search'); // Get search query
+
+        // Build query with filters
+        $query = $productModel
+            ->join('categories', 'categories.category_id = products.category_id')
+            ->join("brands", "brands.brand_id = products.brand_id")
+            ->where('category_name', 'new_arrival');
+
+        // Filter by brand
+        if ($brand) {
+            $query->where('brand_name', $brand);
+        }
+
+        // Filter by product_name or brand_name
+        if ($search) {
+            $query->groupStart() // Start grouping OR conditions
+                ->like('product_name', $search) // Match product_name
+                ->orLike('brand_name', $search) // Match brand_name
+                ->groupEnd(); // End grouping
+        }
+
+        // Fetch filtered products
+        $products = $query->findAll();
+
+        // Attach file path to each product
+        foreach ($products as &$product) {
+            $image = $fileModel
+                ->where('product_id', $product['product_id'])
+                ->first();
+
+            $product['file_path'] = $image['file_path'] ?? null; // Handle missing images
+        }
+
+        // Prepare data for the view
+        $data = [
+            "products" => $products
+        ];
+
+        return view('customer/v_new_arrival', $data);
     }
+
 
     public function managementProduct(): string
     {

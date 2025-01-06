@@ -11,14 +11,12 @@ $routes->get('/register', 'AuthController::registerView');
 $routes->post('/register/submit', 'AuthController::registerAuth');
 $routes->get('/logout', 'AuthController::logout');
 
-
-$routes->get('/', 'HomeController::index');
-$routes->get('/product', 'ProductController::index');
-$routes->get('/product/(:num)', 'ProductController::detail/$1');
-$routes->get('/new-arrival', 'ProductController::newArrival');
-$routes->get('/top-selling', 'ProductController::topSelling');
-
 $routes->group('/', function ($routes) {
+  $routes->get('', 'HomeController::index');
+  $routes->get('/product', 'ProductController::index');
+  $routes->get('/product/(:num)', 'ProductController::detail/$1');
+  $routes->get('/new-arrival', 'ProductController::newArrival');
+  $routes->get('/top-selling', 'ProductController::topSelling');
   $routes->get('cart', 'CartController::cartView');
   $routes->get('cart/get', 'CartController::getCart');
   $routes->post('add-to-cart/(:num)', 'CartController::addToCart/$1');
@@ -27,6 +25,8 @@ $routes->group('/', function ($routes) {
   $routes->get('checking-payment', 'PaymentController::checkingPaymentView');
   $routes->get('check-payment', 'PaymentController::checkingPayment');
   $routes->post('already-transferred', 'PaymentController::alreadyTransferred');
+  $routes->get('success-payment', 'PaymentController::successPaymentView');
+  $routes->get('my-order', 'OrderController::index');
 });
 
 $routes->group('/admin', function ($routes) {

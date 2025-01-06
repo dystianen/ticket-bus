@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CartModel;
 use App\Models\PaymentModel;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class PaymentController extends BaseController
 {
@@ -79,7 +78,7 @@ class PaymentController extends BaseController
         // Update cart status to 'checking_payment'
         $cartModel
             ->where('user_id', $userId)
-            ->where('status', 'cart') // Only update carts with status 'cart'
+            ->where('status', 'waiting_payment') // Only update carts with status 'cart'
             ->set(['status' => 'checking_payment'])
             ->update();
 
@@ -113,7 +112,20 @@ class PaymentController extends BaseController
         // Check if all products have 'success_payment' status
         $isPaymentSuccess = ($totalChecking === 0 && $totalSuccess > 0);
 
+        if ($isPaymentSuccess) {
+            $cartModel
+                ->where('user_id', $userId)
+                ->where('status', 'checking_payment') // Only update carts with status 'cart'
+                ->set(['status' => 'success_payment'])
+                ->update();
+        }
+
         // Return true or false as JSON
-        return $this->response->setJSON(['success' => $isPaymentSuccess]);
+        return $this->response->setJSON($isPaymentSuccess);
+    }
+
+    public function successPaymentView()
+    {
+        return view('customer/v_success_payment');
     }
 }

@@ -5,7 +5,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">All Product</li>
+      <li class="breadcrumb-item active" aria-current="page">New Arrival</li>
     </ol>
   </nav>
 
@@ -14,7 +14,7 @@
       <?= $this->include('components/sidebar_filter') ?>
     </div>
     <div class="col-8">
-      <h3>All Product</h3>
+      <h3>New Arrival</h3>
 
       <section>
         <div class="row gap-5 mt-5">

@@ -32,14 +32,14 @@
     }
 
     .btn-outline-primary {
-      color: var(--bs-primary);
-      border-color: var(--bs-primary);
+      color: var(--bs-primary) !important;
+      border-color: var(--bs-primary) !important;
     }
 
     .btn-outline-primary:hover,
     .btn-outline-primary:active {
-      color: white;
-      border-color: var(--bs-primary);
+      color: white !important;
+      border-color: var(--bs-primary) !important;
       background-color: var(--bs-primary) !important;
     }
 
@@ -93,9 +93,11 @@
         <div class="d-flex">
           <a href="/cart" class="btn position-relative">
             <i data-feather="shopping-cart"></i>
-            <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger">
-              0
-            </span>
+            <?php if (json_encode(session()->get('is_logged_in'))): ?>
+              <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger" style="visibility: hidden;">
+                0
+              </span>
+            <?php endif; ?>
           </a>
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
@@ -195,55 +197,40 @@
     function handleSearch(event) {
       event.preventDefault()
       const value = document.getElementById("search-input").value;
-      window.location.replace(`/product?search=${value}`)
+      if (window.location.pathname === '/') {
+        window.location.replace(`/product?search=${value}`)
+      } else {
+        window.location.replace(`?search=${value}`)
+      }
     }
 
     async function fetchCart() {
       try {
-        const response = await fetch('<?= base_url() ?>cart/get');
+        const response = await fetch('<?= base_url('cart/get') ?>');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
         const cartItems = await response.json();
 
         // Update cart icon badge count
         const cartBadge = document.getElementById('cart-badge');
-        cartBadge.innerText = cartItems.length;
-      } catch (error) {
-        console.error('Failed to fetch cart:', error);
-      }
-    }
-
-    // Fetch cart on page load
-    window.addEventListener('DOMContentLoaded', fetchCart);
-
-    let checkPaymentInterval; // Declare interval variable
-
-    async function checkPayment() {
-      try {
-        const response = await fetch('<?= base_url() ?>check-payment');
-        const cartItems = await response.json();
-
-        // Update cart icon badge count
-        const cartBadge = document.getElementById('cart-badge');
-        cartBadge.innerText = cartItems.length;
-
-        // Check if all items have status 'success_payment'
-        const isSuccess = cartItems.every(item => item.status === 'success_payment');
-
-        // Stop interval when all items have 'success_payment'
-        if (isSuccess) {
-          clearInterval(checkPaymentInterval); // Clear the interval
-          console.log('Payment is successful for all items. Stopping checks.');
+        if (cartItems.length > 0) {
+          cartBadge.innerText = cartItems.length;
+          cartBadge.style.visibility = "visible"
         }
       } catch (error) {
         console.error('Failed to fetch cart:', error);
       }
     }
 
-    // Start interval to check payment every 5 seconds
-    window.addEventListener('DOMContentLoaded', () => {
-      checkPayment(); // Initial check on page load
-      checkPaymentInterval = setInterval(checkPayment, 5000); // Repeat check every 5 seconds
-    });
+    // Fetch cart on page load if the user is logged in
+    if (<?= json_encode(session()->get('is_logged_in')) ?>) {
+      window.addEventListener('DOMContentLoaded', fetchCart);
+    }
   </script>
+
+  <?= $this->renderSection('scripts') ?>
 </body>
 
 </html>

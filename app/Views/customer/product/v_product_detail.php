@@ -25,13 +25,14 @@
       </div>
     </div>
     <div class="col">
+      <h5 style="font-weight: 700; color: #e21936; text-transform: uppercase"><?= $product['brand_name'] ?></h5>
       <h1 class="text-primary" style="font-weight: 700;">
         <?= $product["product_name"] ?>
       </h1>
 
       <h1 style="font-weight: 700;"><?= $product["price"] ?></h1>
 
-      <p><?= $product["description"] ?></p>
+      <p class="ellipsis-3"><?= $product["description"] ?></p>
 
       <form action="<?= base_url() ?>add-to-cart/<?= $product['product_id'] ?>" method="POST">
         <div class="my-4">
