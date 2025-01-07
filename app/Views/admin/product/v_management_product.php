@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <section>
-  <h1>Management Product</h1>
+  <h1>Manage Product</h1>
   <a href="/admin/product/create" class="btn btn-primary">+ Add Product</a>
   <div class="card-body py-3">
     <!-- begin::Table container -->

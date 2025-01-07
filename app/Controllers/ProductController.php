@@ -23,7 +23,8 @@ class ProductController extends BaseController
 
         // Build query with filters
         $query = $productModel
-            ->join("brands", "brands.brand_id = products.brand_id");
+            ->join("brands", "brands.brand_id = products.brand_id")
+            ->where('products.deleted_at', null);
 
         // Filter by brand
         if ($brand) {
@@ -63,7 +64,7 @@ class ProductController extends BaseController
         $productModel = new ProductModel();
         $product = $productModel
             ->join("brands", "brands.brand_id = products.brand_id")
-            ->where("product_id", $productId)
+            ->where("products.product_id", $productId)
             ->first();
 
         $fileModel = new FileModel();
@@ -96,7 +97,8 @@ class ProductController extends BaseController
         $query = $productModel
             ->join('categories', 'categories.category_id = products.category_id')
             ->join("brands", "brands.brand_id = products.brand_id")
-            ->where('category_name', 'top_selling');
+            ->where('category_name', 'top_selling')
+            ->where('products.deleted_at', null);
 
         // Filter by brand
         if ($brand) {
@@ -144,7 +146,8 @@ class ProductController extends BaseController
         $query = $productModel
             ->join('categories', 'categories.category_id = products.category_id')
             ->join("brands", "brands.brand_id = products.brand_id")
-            ->where('category_name', 'new_arrival');
+            ->where('category_name', 'new_arrival')
+            ->where('products.deleted_at', null);
 
         // Filter by brand
         if ($brand) {
@@ -185,6 +188,7 @@ class ProductController extends BaseController
         $productModel = new ProductModel();
         $product = $productModel
             ->join('categories', 'categories.category_id = products.category_id')
+            ->where('products.deleted_at', null)
             ->findAll();
 
         $data = [

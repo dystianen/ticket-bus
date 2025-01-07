@@ -1,3 +1,7 @@
+/* .row {
+  width: 100% !important;
+} */
+
 .hero-section {
   height: max-content;
 }
@@ -34,6 +38,7 @@
 }
 
 .card-product {
+  width: calc(25% - 0.5rem);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -86,6 +91,15 @@
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  -webkit-animation: rotation 1s linear infinite;
+}
+
+.fa-star {
+  color: lightgray;
+}
+
+.fa-star.checked {
+  color: orange;
 }
 
 @keyframes rotation {

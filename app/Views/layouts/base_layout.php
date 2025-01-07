@@ -103,31 +103,40 @@
         </ul>
         <form class="d-flex" role="search" onsubmit="handleSearch(event)">
           <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="d-flex">
+          <!-- Cart Button -->
           <?php if (session()->get('is_logged_in')): ?>
-            <a href="/cart" class="btn position-relative mt-1">
+            <a href="/cart" class="btn position-relative me-3">
               <i data-feather="shopping-cart"></i>
               <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger" style="visibility: hidden;">
                 0
               </span>
             </a>
+
+            <!-- Navbar Toggler Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Navbar -->
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-              <ul class="navbar-nav">
+              <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                  <a class="nav-link text-gray-600 d-flex align-items-center gap-1" style="text-decoration: none;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i data-feather="user"></i> <span style="font-size: 20px;"><?= session()->get('username') ?></span>
+                  <!-- User Dropdown -->
+                  <a class="nav-link dropdown-toggle text-gray-600 d-flex align-items-center gap-2" style="font-size: 18px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i data-feather="user"></i> <span class="mt-1"><?= session()->get('username') ?></span>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                     <li>
                       <a class="dropdown-item" href="<?= base_url(); ?>my-order">
-                        <i class="fa-solid fa-list mr-2"></i> <span>My Order</span>
+                        <i class="fa-solid fa-list me-2"></i> <span>My Order</span>
                       </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="<?= base_url(); ?>logout">
-                        <i class="fa-solid fa-power-off mr-2"></i> <span>Logout</span>
+                        <i class="fa-solid fa-power-off me-2"></i> <span>Logout</span>
                       </a>
                     </li>
                   </ul>
@@ -135,7 +144,8 @@
               </ul>
             </div>
           <?php else: ?>
-            <a href="/login" class="btn btn-outline-primary rounded-pill">Login/Register</a>
+            <!-- Login Button -->
+            <a href="/login" class="btn btn-outline-primary rounded-pill ms-auto">Login/Register</a>
           <?php endif; ?>
         </div>
       </div>

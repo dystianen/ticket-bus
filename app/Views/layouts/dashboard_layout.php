@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>IMAGINE!</title>
   <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     :root {
@@ -20,10 +20,6 @@
       color: black;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
     .btn-primary {
       background-color: var(--bs-primary);
       border-color: var(--bs-primary);
@@ -35,15 +31,28 @@
       border-color: #4f4666;
     }
 
-    .btn-outline-primary {
+    .nav-link {
       color: var(--bs-primary);
-      border-color: var(--bs-primary);
+    }
+
+    .nav-link:hover {
+      color: #4f4666;
+    }
+
+    .btn-outline-primary {
+      color: var(--bs-primary) !important;
+      border-color: var(--bs-primary) !important;
     }
 
     .btn-outline-primary:hover,
-    .btn-outline-primary:active {
-      color: white;
-      border-color: var(--bs-primary);
+    .btn-outline-primary:active,
+    .btn-check:checked+.btn,
+    .btn.active,
+    .btn.show,
+    .btn:first-child:active,
+    :not(.btn-check)+.btn:active {
+      color: white !important;
+      border-color: var(--bs-primary) !important;
       background-color: var(--bs-primary) !important;
     }
 
@@ -78,23 +87,32 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="gap-4 collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="mb-2 navbar-nav mb-lg-0 mx-0 d-flex flex-column">
+          <ul class="mb-2 navbar-nav mb-lg-0 mx-0 d-flex flex-column gap-2">
             <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">Management Product</a>
+              <a class="nav-link text-white" aria-current="page" href="#">
+                <i class="fa fa-box" style="width: 24px; font-size: 18px"></i> Manage Product
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Management User</a>
+              <a class="nav-link text-white" href="#">
+                <i class="fa fa-users" style="width: 24px;"></i> Manage User
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Management Category</a>
+              <a class="nav-link text-white" href="#">
+                <i class="fa fa-list" style="width: 24px;"></i> Manage Category
+              </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Management Size</a>
+              <a class="nav-link text-white" href="#">
+                <i class="fa fa-ruler-horizontal" style="width: 24px;"></i> Manage Size
+              </a>
             </li>
           </ul>
         </div>
       </nav>
     </aside>
+
     <main class="container mt-4">
       <?= $this->renderSection('content') ?>
     </main>
@@ -115,6 +133,8 @@
       $(".failed").slideUp(500);
     });
   </script>
+
+  <?= $this->renderSection('scripts') ?>
 </body>
 
 </html>
