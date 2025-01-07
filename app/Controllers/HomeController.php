@@ -52,4 +52,9 @@ class HomeController extends BaseController
 
         return view('customer/v_home', $data);
     }
+
+    public function unsupportedView()
+    {
+        return view('v_unsupported');
+    }
 }
