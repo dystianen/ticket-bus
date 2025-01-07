@@ -46,15 +46,7 @@
       </div>
       <hr>
 
-      <div class="d-flex gap-2">
-        <div class="rounded-pill border-0 bg-light d-flex flex-row align-items-center gap-4 px-2 py-1" style="width: max-content;">
-          <button class="btn btn-sm"><i data-feather="minus"></i></button>
-          <span>1</span>
-          <button class="btn btn-sm"><i data-feather="plus"></i></button>
-        </div>
-
-        <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%;">Add to Cart</button>
-      </div>
+      <button type="submit" class="btn btn-primary rounded-pill btn-lg" style="width: 100%;">Add to Cart</button>
     </form>
   </div>
 </div>
