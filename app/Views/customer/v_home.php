@@ -62,7 +62,7 @@
     <p style="font-size: 18px;">Produk-produk terlaris dengan penjualan tertinggi yang paling diminati pelanggan.</p>
   </div>
 
-  <div class="row flex-nowrap gap-4 mt-2" style="width: 100%;">
+  <div class="row flex-nowrap gap-2 mt-2" style="width: 100%;">
     <?php foreach ($topSelling as $p): ?>
       <a href="<?php base_url() ?>product/<?= $p['product_id'] ?>" class="col-3 card-product">
         <img src="<?= $p['file_path'] ?>" alt="">
