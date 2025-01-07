@@ -12,6 +12,7 @@ $routes->post('/login/submit', 'AuthController::loginAuth');
 $routes->get('/register', 'AuthController::registerView');
 $routes->post('/register/submit', 'AuthController::registerAuth');
 $routes->get('/logout', 'AuthController::logout');
+$routes->get('/unsupported', 'HomeController::unsupportedView');
 
 $routes->group('/', function ($routes) {
   $routes->get('', 'HomeController::index');
