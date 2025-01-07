@@ -79,33 +79,39 @@
 </head>
 
 <body>
-  <div class="d-flex gap-4" style="width: 100%;">
-    <aside class="bg-primary px-5" style="height: 100dvh; width: 20rem">
+  <div class="d-flex" style="width: 100%;">
+    <!-- Sidebar -->
+    <aside class="bg-primary px-4 position-fixed d-flex flex-column" style="height: 100dvh; width: 16rem;">
       <nav class="navbar navbar-expand-lg d-flex flex-column align-items-start gap-4">
-        <a class="navbar-brand text-white" style="font-weight: 700; font-size: 32px; text-decoration: none" href="#">IMAGINE</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Brand -->
+        <a class="navbar-brand text-white mt-3" style="font-weight: 700; font-size: 32px; text-decoration: none" href="#">
+          IMAGINE
+        </a>
+        <!-- Toggler -->
+        <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="gap-4 collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="mb-2 navbar-nav mb-lg-0 mx-0 d-flex flex-column gap-2">
-            <li class="nav-item">
-              <a class="nav-link text-white" aria-current="page" href="#">
-                <i class="fa fa-box" style="width: 24px; font-size: 18px"></i> Manage Product
+        <!-- Menu -->
+        <div class="collapse navbar-collapse mt-3" id="navbarMenu">
+          <ul class="navbar-nav d-flex flex-column gap-3 w-100">
+            <li class="nav-item w-100">
+              <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-product">
+                <i class="fa fa-box"></i> Manage Product
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
-                <i class="fa fa-users" style="width: 24px;"></i> Manage User
+            <li class="nav-item w-100">
+              <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-payment">
+                <i class="fa fa-truck"></i> Manage Payment
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
-                <i class="fa fa-list" style="width: 24px;"></i> Manage Category
+            <li class="nav-item w-100">
+              <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-order">
+                <i class="fa fa-truck"></i> Manage Order
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
-                <i class="fa fa-ruler-horizontal" style="width: 24px;"></i> Manage Size
+            <li class="nav-item w-100">
+              <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-size">
+                <i class="fa fa-ruler-horizontal"></i> Manage Size
               </a>
             </li>
           </ul>
@@ -113,10 +119,12 @@
       </nav>
     </aside>
 
-    <main class="container mt-4">
+    <!-- Main Content -->
+    <main class="container-fluid" style="margin-left: 16rem; padding: 1.5rem;">
       <?= $this->renderSection('content') ?>
     </main>
   </div>
+
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

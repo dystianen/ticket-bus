@@ -35,6 +35,10 @@ class Payments extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'status' => array(
+                'type' => "ENUM('waiting_confirmation', 'confirmed', 'rejected')",
+                'null' => true,
+            ),
             'created_at' => [
                 'type'    => 'TIMESTAMP',
                 'default' => new RawSql('CURRENT_TIMESTAMP'),

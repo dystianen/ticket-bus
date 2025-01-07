@@ -183,7 +183,7 @@ class ProductController extends BaseController
     }
 
 
-    public function managementProduct(): string
+    public function manageProduct(): string
     {
         $productModel = new ProductModel();
         $product = $productModel
@@ -194,7 +194,7 @@ class ProductController extends BaseController
         $data = [
             "products" => $product,
         ];
-        return view('admin/product/v_management_product', $data);
+        return view('admin/product/v_manage_product', $data);
     }
 
     public function createProduct(): string

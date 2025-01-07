@@ -19,6 +19,7 @@ class PaymentController extends BaseController
         $data = [
             'user_id' => $userId,
             'total' => $this->request->getVar('total_price'),
+            'status' => 'waitiing_confirmation',
             'deleted_at' => null
         ];
         $paymentModel->save($data);
@@ -72,7 +73,10 @@ class PaymentController extends BaseController
         // Update payment with proof of transfer
         $paymentModel
             ->where('payment_id', $paymentId)
-            ->set(['proof_of_transfer' => '/assets/images/' . $fileName])
+            ->set([
+                'proof_of_transfer' => '/assets/images/' . $fileName,
+                'status' => 'waiting_confirmation'
+            ])
             ->update();
 
         // Update cart status to 'checking_payment'
@@ -127,5 +131,59 @@ class PaymentController extends BaseController
     public function successPaymentView()
     {
         return view('customer/v_success_payment');
+    }
+
+    public function managePaymentView()
+    {
+        $paymentModel = new PaymentModel();
+
+        $payments = $paymentModel
+            ->join('users', 'users.user_id = payments.user_id')
+            ->where('payments.deleted_at', null)
+            ->findAll();
+
+        $data = [
+            'payments' => $payments,
+        ];
+
+        return view('admin/payment/v_payment', $data);
+    }
+
+    public function confirmPayment($paymentId)
+    {
+        $cartModel = new CartModel();
+        $paymentModel = new PaymentModel();
+    
+        // Mengambil data pembayaran berdasarkan payment_id
+        $payment = $paymentModel->where('payment_id', $paymentId)->first();
+    
+        // Periksa apakah data pembayaran ditemukan
+        if (!$payment) {
+            session()->setFlashdata('error', 'Payment not found.');
+            return redirect()->to('/admin/manage-payment');
+        }
+    
+        // Update semua status cart yang terkait user_id ke 'success_payment'
+        $updated = $cartModel
+            ->where('user_id', $payment['user_id'])
+            ->where('status', 'checking_payment')
+            ->set(['status' => 'success_payment'])
+            ->update();
+    
+        // Update status pembayaran menjadi 'confirmed'
+        $paymentUpdate = $paymentModel
+            ->where('payment_id', $paymentId)
+            ->set(['status' => 'confirmed'])
+            ->update();
+    
+        // Periksa apakah semua proses berhasil
+        if ($updated && $paymentUpdate) {
+            session()->setFlashdata('message', 'Confirm payment successfully.');
+        } else {
+            session()->setFlashdata('error', 'Failed to confirm payment.');
+        }
+    
+        // Redirect kembali ke halaman manage payment
+        return redirect()->to('/admin/manage-payment');
     }
 }

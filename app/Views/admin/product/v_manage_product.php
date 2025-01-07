@@ -2,7 +2,8 @@
 
 <?= $this->section('content') ?>
 <section>
-  <h1>Management Order</h1>
+  <h1>Manage Product</h1>
+  <a href="/admin/product/create" class="btn btn-primary mt-4">+ Add Product</a>
   <div class="card-body py-3">
     <!-- begin::Table container -->
     <div class="table-responsive">
@@ -16,7 +17,6 @@
             <th>Description</th>
             <th>Rating</th>
             <th>Price</th>
-            <th>Action</th>
           </tr>
           </thead>
           <tbody>
@@ -27,12 +27,6 @@
                 <td><?= $d["description"] ?></td>
                 <td><?= $d["rating"] ?></td>
                 <td><?= $d["price"] ?></td>
-                <td>
-                  <div>
-                    <i class="fas fa-edit" title="Edit" data-bs-toggle="modal" data-bs-target="#editModal<?= $d['product_id'] ?>"></i>
-                    <i class="fas fa-trash-alt" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $d['product_id'] ?>"></i>
-                  </div>
-                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>

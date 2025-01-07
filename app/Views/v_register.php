@@ -115,7 +115,7 @@
               </div>
               <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <input class="form-control rounded-pill" id="address" id="address" placeholder="Input your address">
+                <input class="form-control rounded-pill" name="address" id="address" placeholder="Input your address">
               </div>
             </div>
 

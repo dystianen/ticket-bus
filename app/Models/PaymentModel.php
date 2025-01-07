@@ -12,7 +12,7 @@ class PaymentModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'total', 'proof_of_transfer', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields    = ['user_id', 'total', 'proof_of_transfer', 'status', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
 

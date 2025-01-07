@@ -177,4 +177,47 @@ class OrderController extends BaseController
             ]);
         }
     }
+
+    public function manageOrderView()
+    {
+        $cartModel = new CartModel();
+
+        $statusArray = [
+            'success_payment' => 'Success Payment',
+            'under_packaging' => 'Under Packaging',
+            'waiting_for_courier' => 'Waiting for Courier',
+            'sent' => 'Sent',
+            'finished' => 'Finished',
+            'cancelled' => 'Cancelled'
+        ];
+
+        $carts = $cartModel
+            ->join('users', 'users.user_id = cart.user_id')
+            ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
+            ->join('sizes', 'sizes.size_id = cart.size_id')
+            ->where('cart.deleted_at', null)
+            ->findAll();
+
+        $data = [
+            'carts' => $carts,
+            'status' => $statusArray,
+        ];
+
+        return view('admin/order/v_manage_order', $data);
+    }
+
+    public function updateOrderStatus($cartId)
+    {
+        $cartModel = new CartModel();
+        $status = $this->request->getPost('status');  // Getting the selected status from the form
+
+        if ($cartModel->update($cartId, ['status' => $status])) {
+            session()->setFlashdata('message', 'Order status updated successfully.');
+        } else {
+            session()->setFlashdata('error', 'Failed to update order status.');
+        }
+
+        return redirect()->to('/admin/manage-order');
+    }
 }

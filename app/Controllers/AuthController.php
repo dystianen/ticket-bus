@@ -73,9 +73,9 @@ class AuthController extends BaseController
         helper(['form']);
         $userModel = new UserModel();
         $rules = [
-            'username' => 'required|min_length[2]|max_length[50]',
-            'email' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[3]|max_length[50]',
+            'username' => 'required|max_length[50]',
+            'email' => 'required|max_length[100]|valid_email|is_unique[users.email]',
+            'password' => 'required|max_length[50]',
             'address' => 'required',
         ];
 

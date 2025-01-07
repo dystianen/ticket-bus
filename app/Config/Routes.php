@@ -49,8 +49,15 @@ $routes->group('/', function ($routes) {
 });
 
 $routes->group('/admin', function ($routes) {
-  $routes->get('management-product', 'ProductController::managementProduct');
+  $routes->get('manage-product', 'ProductController::manageProduct');
   $routes->get('product/create', 'ProductController::createProduct');
   $routes->post('product/create/submit', 'ProductController::submitCreateProduct');
-  $routes->post('order/update-status/(:any)/(:any)', 'CartController::updateStatus/$1/$2');
+
+  // ORDER
+  $routes->get('manage-order', 'OrderController::manageOrderView');
+  $routes->post('update-order-status/(:num)', 'OrderController::updateOrderStatus/$1');
+
+  // PAYMENT
+  $routes->get('manage-payment', 'PaymentController::managePaymentView');
+  $routes->post('confirm-payment/(:num)', 'PaymentController::confirmPayment/$1');
 });
