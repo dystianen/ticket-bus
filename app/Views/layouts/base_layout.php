@@ -108,7 +108,7 @@
         <div class="d-flex">
           <!-- Cart Button -->
           <?php if (session()->get('is_logged_in')): ?>
-            <a href="/cart" class="btn position-relative me-3">
+            <a href="/cart" class="btn position-relative mt-1 me-3">
               <i data-feather="shopping-cart"></i>
               <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger" style="visibility: hidden;">
                 0
