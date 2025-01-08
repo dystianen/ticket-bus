@@ -86,8 +86,8 @@
     <?php endif ?>
     <div class="row" style="width: 100%; height: 100dvh; margin: 0">
       <div class="col d-flex justify-content-center align-items-center">
-        <form action="<?php echo base_url(); ?>/register/submit" method="post">
-          <div class="d-flex flex-column gap-4">
+        <form action="<?php echo base_url(); ?>/register/submit" method="post" style="width: 100%">
+          <div class="d-flex flex-column justify-content-center align-items-center gap-4">
             <h1 class="text-primary" style="font-weight: 700">Register!</h1>
             <?php if (session()->getFlashData('failed')) : ?>
               <div class="alert alert-danger" role="alert">
@@ -100,7 +100,7 @@
                 <?php echo session("success") ?>
               </div>
             <?php endif; ?>
-            <div class="card p-4 rounded-lg" style="width: 450px;">
+            <div class="card p-4 rounded-lg card-auth">
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input class="form-control rounded-pill" name="username" id="username" placeholder="Input your username">
@@ -126,7 +126,7 @@
           </div>
         </form>
       </div>
-      <div class="col" style="height: 100%; padding: 0">
+      <div class="col d-none d-lg-block" style="height: 100%; padding: 0">
         <img src="/assets/images/style.png" alt="" width="100%" height="100%">
       </div>
     </div>

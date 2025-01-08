@@ -11,8 +11,8 @@
 
 <h3 class="mb-4">Your Cart</h3>
 
-<div class="row">
-  <div class="col-8">
+<div class="row g-3">
+  <div class="col-12 col-lg-8">
     <div class="d-flex flex-column gap-2">
       <?php if (empty($carts)): ?>
         <!-- Empty Cart State -->

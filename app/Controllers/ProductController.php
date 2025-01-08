@@ -268,7 +268,7 @@ class ProductController extends BaseController
             }
 
             session()->setFlashdata('success', 'Create Product Successfully.');
-            return redirect()->to(base_url("/admin/management-product"));
+            return redirect()->to(base_url("/admin/manage-product"));
         } else {
             $validation = Services::validation();
             return redirect()->to(base_url('/admin/product/create'))->withInput()->with('validation', $validation);

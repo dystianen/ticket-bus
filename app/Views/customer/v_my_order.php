@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <h3 class="mb-4">Your Order</h3>
 <!-- Tabs for status -->
-<ul class="nav nav-tabs" id="order-tabs">
+<ul class="nav nav-tabs overflow-x-auto flex-nowrap d-flex" id="order-tabs">
   <li class="nav-item">
     <a class="nav-link active" data-status="under-packaging" href="#">Under packaging</a>
   </li>
@@ -57,13 +57,13 @@
         const buttonHtml = getButtonHtml(order.cart_id, status); // Get dynamic button HTML
 
         const orderCard = `
-        <div class="d-flex justify-content-between p-3 mb-3 rounded-4" style="border: 1px solid lightgray">
-          <div class="d-flex align-content-center gap-3 w-75">
+        <div class="d-flex flex-column flex-lg-row justify-content-between p-3 mb-3 rounded-4" style="border: 1px solid lightgray">
+          <div class="d-flex align-content-center gap-3">
             <!-- Product Image -->
             <img src="${order.file_path}" width="100px" alt="${order.product_name}">
             <!-- Product Details -->
             <div class="d-flex flex-column">
-              <h5>${order.product_name}</h5>
+              <h5>${order.brand_name} ${order.product_name}</h5>
               <span>Size: ${order.size_name}</span>
               <span>Price: Rp ${parseInt(order.price).toLocaleString('id-ID')}</span>
             </div>
@@ -81,10 +81,10 @@
     // Function to generate buttons based on status
     function getButtonHtml(orderId, status) {
       if (status === 'under-packaging') {
-        return `<button class="btn btn-danger rounded-pill px-4" onclick="cancelOrder(${orderId})">Cancel Order</button>`;
+        return `<button class="btn btn-outline-primary rounded-pill px-4" onclick="cancelOrder(${orderId})">Cancel Order</button>`;
       }
       if (status === 'sent') {
-        return `<button class="btn btn-primary rounded-pill px-4" onclick="finishOrder(${orderId})">Finish It</button>`;
+        return `<button class="btn btn-outline-primary rounded-pill px-4" onclick="finishOrder(${orderId})">Finish Order</button>`;
       }
       return ''; // No buttons for other statuses
     }

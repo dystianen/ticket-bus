@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>IMAGINE!</title>
   <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     :root {
@@ -77,8 +77,8 @@
   <main>
     <div class="row" style="width: 100%; height: 100dvh; margin: 0">
       <div class="col d-flex justify-content-center align-items-center">
-        <form action="<?php echo base_url(); ?>/login/submit?redirectTo=<?php echo esc($_GET['redirectTo'] ?? ''); ?>" method="post">
-          <div class="d-flex flex-column gap-4">
+        <form action="<?php echo base_url(); ?>/login/submit?redirectTo=<?php echo esc($_GET['redirectTo'] ?? ''); ?>" method="post" style="width: 100%">
+          <div class="d-flex flex-column justify-content-center align-items-center gap-4">
             <h1 class="text-primary" style="font-weight: 700">Login!</h1>
 
             <?php if (session()->getFlashData('failed')) : ?>
@@ -93,7 +93,7 @@
               </div>
             <?php endif; ?>
 
-            <div class="card p-4 rounded-lg" style="width: 450px;">
+            <div class="card p-4 rounded-lg card-auth">
               <div class="mb-3">
                 <label for="username" class="form-label">Email/Username</label>
                 <input class="form-control rounded-pill" name="username" id="username" placeholder="Input your username">
@@ -111,7 +111,7 @@
         </form>
       </div>
     </div>
-    <div class="col" style="height: 100%; padding: 0">
+    <div class="col d-none d-lg-block" style="height: 100%; padding: 0">
       <img src="/assets/images/style.png" alt="" width="100%" height="100%">
     </div>
     </div>

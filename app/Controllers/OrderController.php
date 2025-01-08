@@ -20,6 +20,7 @@ class OrderController extends BaseController
         $userId = $session->get('user_id');
         $carts = $cartModel
             ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
             ->join('sizes', 'sizes.size_id = cart.size_id')
             ->where('user_id', $userId)
             ->where('status', 'under_packaging')
@@ -45,6 +46,7 @@ class OrderController extends BaseController
         $userId = $session->get('user_id');
         $carts = $cartModel
             ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
             ->join('sizes', 'sizes.size_id = cart.size_id')
             ->where('user_id', $userId)
             ->where('status', 'waiting_for_courier')
@@ -70,6 +72,7 @@ class OrderController extends BaseController
         $userId = $session->get('user_id');
         $carts = $cartModel
             ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
             ->join('sizes', 'sizes.size_id = cart.size_id')
             ->where('user_id', $userId)
             ->where('status', 'sent')
@@ -95,6 +98,7 @@ class OrderController extends BaseController
         $userId = $session->get('user_id');
         $carts = $cartModel
             ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
             ->join('sizes', 'sizes.size_id = cart.size_id')
             ->where('user_id', $userId)
             ->where('status', 'finished')
@@ -120,6 +124,7 @@ class OrderController extends BaseController
         $userId = $session->get('user_id');
         $carts = $cartModel
             ->join('products', 'products.product_id = cart.product_id')
+            ->join('brands', 'brands.brand_id = products.brand_id')
             ->join('sizes', 'sizes.size_id = cart.size_id')
             ->where('user_id', $userId)
             ->where('status', 'cancelled')
