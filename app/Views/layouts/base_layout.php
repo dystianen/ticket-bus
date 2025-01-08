@@ -264,20 +264,6 @@
     if (<?= json_encode(session()->get('is_logged_in')) ?>) {
       window.addEventListener('DOMContentLoaded', fetchCart);
     }
-
-    // function checkDesktopAccess() {
-    //   const isDesktop = window.innerWidth > 1024; // Lebar minimum untuk desktop
-
-    //   if (!isDesktop && window.location.pathname !== '/unsupported') {
-    //     window.location.href = '/unsupported';
-    //   }
-    // }
-
-    // // Panggil fungsi saat halaman dimuat
-    // window.addEventListener('load', checkDesktopAccess);
-
-    // // Tambahkan listener jika pengguna mengubah ukuran jendela browser
-    // window.addEventListener('resize', checkDesktopAccess);
   </script>
 
   <?= $this->renderSection('scripts') ?>
