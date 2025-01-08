@@ -1,11 +1,9 @@
-<div class="card p-4">
+<div class="card p-4 mt-4">
   <h5>Filters</h5>
   <hr>
-
-  <div class="d-flex flex-column" id="brand-filters">
+  <div class="d-flex flex-row flex-lg-column overflow-x-auto flex-nowrap" id="brand-filters">
     <!-- Filters will be populated here dynamically -->
   </div>
-
   <!-- <button class="btn btn-primary rounded-pill mt-4">Apply Filter</button> -->
 </div>
 
@@ -35,6 +33,7 @@
         filterItem.classList.add('d-flex', 'justify-content-between', 'align-items-center');
 
         const brandName = document.createElement('span');
+        brandName.style.whiteSpace = 'nowrap'
         brandName.textContent = brand.brand_name; // Assuming brand name is stored in `name` field
 
         const filterButton = document.createElement('button');

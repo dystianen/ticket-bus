@@ -9,19 +9,19 @@
   </ol>
 </nav>
 
-<div class="row mt-5 gap-5">
-  <div class="col-7">
-    <div class="d-flex gap-4" style="width: 100%;">
-      <div class="d-flex flex-column gap-4">
+<div class="row mt-5 g-3">
+  <div class="col-12 col-md-7">
+    <div class="d-flex flex-column-reverse flex-md-row gap-4" style="width: 100%;">
+      <div class="d-flex flex-lg-column gap-4">
         <?php foreach ($product["images"] as $index => $i) : ?>
-          <div class="card-image card d-flex align-items-center" style="width: 100px; height: 100px">
-            <img src="<?= $i ?>" alt="" style="width: 90px; height: 90px; object-fit: contain" onclick="changeMainImage('<?= $i ?>')">
+          <div class="card-image card d-flex align-items-center">
+            <img src="<?= $i ?>" alt="" style="object-fit: contain" onclick="changeMainImage('<?= $i ?>')">
           </div>
         <?php endforeach; ?>
       </div>
 
       <!-- Main Image Display -->
-      <img id="mainImage" src="<?= $product["images"][0] ?>" alt="" height="600px" width="100%">
+      <img class="main-image" id="mainImage" src="<?= $product["images"][0] ?>" alt="" width="100%">
     </div>
   </div>
   <div class="col">

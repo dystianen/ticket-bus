@@ -84,18 +84,24 @@
     <header class="pt-1 pb-2 px-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white text-decoration-underline" href="/signup"> Sign Up Now</a></header>
   <?php endif; ?>
 
-  <nav class="navbar navbar-expand-lg" style="height: 100px;">
+  <nav class="navbar navbar-expand-lg z-3" style="height: 100px;">
     <div class="container">
+      <!-- Logo -->
       <a class="navbar-brand text-primary" style="font-weight: 700; font-size: 32px; text-decoration: none" href="/">
         <img src="/assets/images/logo_imagine.png" alt="IMAGINE" width="60px" height="60px">
       </a>
+
+      <!-- Toggler Button -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="gap-4 collapse navbar-collapse align-items-center" id="navbarSupportedContent">
+
+      <!-- Navbar Content -->
+      <div class="gap-4 collapse navbar-collapse align-items-center bg-white" id="navbarSupportedContent">
+        <!-- Navigation Links -->
         <ul class="mb-2 navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/product" style="font-weight: 500;">All Product</a>
+            <a class="nav-link" href="/product" style="font-weight: 500;">All Product</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/top-selling" style="font-weight: 500;">Top Selling</a>
@@ -104,56 +110,51 @@
             <a class="nav-link" href="/new-arrival" style="font-weight: 500;">New Arrival</a>
           </li>
         </ul>
+
+        <!-- Search Form -->
         <form class="d-flex" role="search" onsubmit="handleSearch(event)">
           <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
         </form>
-        <div class="d-flex">
-          <!-- Cart Button -->
+
+        <!-- User Section -->
+        <div class="d-flex justify-content-start align-items-center gap-3 mt-4 mt-md-0 ml-3">
           <?php if (session()->get('is_logged_in')): ?>
-            <a href="/cart" class="btn position-relative mt-1 me-3">
+            <!-- Cart Button -->
+            <a href="/cart" class="btn position-relative">
               <i data-feather="shopping-cart"></i>
               <span id="cart-badge" class="position-absolute top-10 start-10 translate-middle badge rounded-pill bg-danger" style="visibility: hidden;">
                 0
               </span>
             </a>
 
-            <!-- Navbar Toggler Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Collapsible Navbar -->
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                  <!-- User Dropdown -->
-                  <a class="nav-link dropdown-toggle text-gray-600 d-flex align-items-center gap-2" style="font-size: 18px;" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i data-feather="user"></i> <span class="mt-1"><?= session()->get('username') ?></span>
+            <!-- User Dropdown -->
+            <div class="dropdown">
+              <a class="dropdown-toggle d-flex align-items-center text-gray-600 gap-2" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 18px;">
+                <i data-feather="user"></i> <span class="mt-1"><?= session()->get('username') ?></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <a class="dropdown-item" href="<?= base_url(); ?>my-order">
+                    <i class="fa-solid fa-list me-2"></i> My Order
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li>
-                      <a class="dropdown-item" href="<?= base_url(); ?>my-order">
-                        <i class="fa-solid fa-list me-2"></i> <span>My Order</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="<?= base_url(); ?>logout">
-                        <i class="fa-solid fa-power-off me-2"></i> <span>Logout</span>
-                      </a>
-                    </li>
-                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="<?= base_url(); ?>logout">
+                    <i class="fa-solid fa-power-off me-2"></i> Logout
+                  </a>
                 </li>
               </ul>
             </div>
           <?php else: ?>
-            <!-- Login Button -->
-            <a href="/login" class="btn btn-outline-primary rounded-pill ms-auto">Login/Register</a>
+            <!-- Login/Register Button -->
+            <a href="/login" class="btn btn-outline-primary rounded-pill">Login/Register</a>
           <?php endif; ?>
         </div>
       </div>
     </div>
   </nav>
+
 
   <main class="container">
     <?= $this->renderSection('content') ?>
@@ -216,6 +217,7 @@
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery.marquee@1.6.0/jquery.marquee.min.js" type="text/javascript"></script>
   <script src="https://kit.fontawesome.com/218d5eb4ba.js" crossorigin="anonymous"></script>
   <script>
     feather.replace();
@@ -263,19 +265,19 @@
       window.addEventListener('DOMContentLoaded', fetchCart);
     }
 
-    function checkDesktopAccess() {
-      const isDesktop = window.innerWidth > 1024; // Lebar minimum untuk desktop
+    // function checkDesktopAccess() {
+    //   const isDesktop = window.innerWidth > 1024; // Lebar minimum untuk desktop
 
-      if (!isDesktop && window.location.pathname !== '/unsupported') {
-        window.location.href = '/unsupported';
-      }
-    }
+    //   if (!isDesktop && window.location.pathname !== '/unsupported') {
+    //     window.location.href = '/unsupported';
+    //   }
+    // }
 
-    // Panggil fungsi saat halaman dimuat
-    window.addEventListener('load', checkDesktopAccess);
+    // // Panggil fungsi saat halaman dimuat
+    // window.addEventListener('load', checkDesktopAccess);
 
-    // Tambahkan listener jika pengguna mengubah ukuran jendela browser
-    window.addEventListener('resize', checkDesktopAccess);
+    // // Tambahkan listener jika pengguna mengubah ukuran jendela browser
+    // window.addEventListener('resize', checkDesktopAccess);
   </script>
 
   <?= $this->renderSection('scripts') ?>
