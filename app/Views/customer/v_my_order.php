@@ -48,9 +48,19 @@
     // Function to render orders dynamically
     function renderOrders(orders, status) {
       if (orders.length === 0) {
-        contentContainer.innerHTML = '<p>No orders found.</p>';
+        contentContainer.innerHTML = `
+          <div class="d-flex flex-column mt-4">
+            <img 
+              src="/assets/images/empty_cart.png" 
+              alt="Empty Cart" 
+              width="200px" 
+              height="200px" 
+            />
+          </div>
+        `;
         return;
       }
+
 
       contentContainer.innerHTML = ''; // Clear previous content
       orders.forEach(order => {

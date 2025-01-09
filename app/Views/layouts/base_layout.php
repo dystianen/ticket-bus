@@ -34,16 +34,19 @@
     }
 
     .nav-link {
-      color: var(--bs-light-primary);
+      color: black;
+      opacity: 60%;
     }
 
     .nav-link:hover {
       color: var(--bs-primary);
+      opacity: 100%;
     }
 
     .navbar-nav .nav-link.active,
     .navbar-nav .nav-link.show {
       color: var(--bs-primary);
+      opacity: 100%;
     }
 
     .btn-outline-primary {
