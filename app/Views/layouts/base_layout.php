@@ -12,6 +12,7 @@
   <style>
     :root {
       --bs-primary: #352f44;
+      --bs-light-primary: #4f4666;
       --bs-primary-rgb: 53, 47, 68;
       --bs-cream: #FAF0E6
     }
@@ -28,16 +29,21 @@
 
     .btn-primary:hover,
     .btn-primary:active {
-      background-color: #4f4666 !important;
-      border-color: #4f4666;
+      background-color: var(--bs-light-primary) !important;
+      border-color: var(--bs-light-primary);
     }
 
     .nav-link {
-      color: var(--bs-primary);
+      color: var(--bs-light-primary);
     }
 
     .nav-link:hover {
-      color: #4f4666;
+      color: var(--bs-primary);
+    }
+
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link.show {
+      color: var(--bs-primary);
     }
 
     .btn-outline-primary {
@@ -55,6 +61,11 @@
       color: white !important;
       border-color: var(--bs-primary) !important;
       background-color: var(--bs-primary) !important;
+    }
+
+    .btn:disabled {
+      border-color: grey;
+      background-color: grey;
     }
 
     .navbar-dark .navbar-nav .nav-link.active,
@@ -264,6 +275,24 @@
     if (<?= json_encode(session()->get('is_logged_in')) ?>) {
       window.addEventListener('DOMContentLoaded', fetchCart);
     }
+
+    // Get all nav-link elements
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Get the current path
+    const currentPath = window.location.pathname;
+
+    // Loop through each nav-link
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+        console.log("masuk")
+        // Add the 'active' class to the matching link
+        link.classList.add('active');
+      } else {
+        // Remove the 'active' class from other links
+        link.classList.remove('active');
+      }
+    });
   </script>
 
   <?= $this->renderSection('scripts') ?>

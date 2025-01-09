@@ -17,7 +17,8 @@
       <?php if (empty($carts)): ?>
         <!-- Empty Cart State -->
         <div class="card p-3">
-          <div class="d-flex justify-content-center align-items-center text-center">
+          <div class="d-flex flex-column justify-content-center align-items-center text-center">
+            <img src="/assets/images/empty_cart.png" alt="Empty Cart" width="200px" height="200px">
             <h5>Your cart is empty. Please add some products to your cart.</h5>
           </div>
         </div>

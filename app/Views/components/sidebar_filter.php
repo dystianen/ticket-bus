@@ -1,4 +1,4 @@
-<div class="card p-4 mt-4">
+<div class="card p-4">
   <h5>Filters</h5>
   <hr>
   <div class="d-flex flex-row flex-lg-column overflow-x-auto flex-nowrap" id="brand-filters">
