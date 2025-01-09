@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 <h3 class="mb-4">Your Order</h3>
 <!-- Tabs for status -->
-<ul class="nav nav-tabs overflow-x-auto flex-nowrap d-flex" id="order-tabs">
+<ul class="nav nav-tabs overflow-x-auto flex-nowrap d-flex justify-content-between" id="order-tabs">
   <li class="nav-item">
     <a class="nav-link active" data-status="under-packaging" href="#">Under packaging</a>
   </li>
@@ -49,13 +49,14 @@
     function renderOrders(orders, status) {
       if (orders.length === 0) {
         contentContainer.innerHTML = `
-          <div class="d-flex flex-column mt-4">
+          <div class="d-flex flex-column align-items-center mt-4 gap-4">
             <img 
               src="/assets/images/empty_cart.png" 
               alt="Empty Cart" 
               width="200px" 
               height="200px" 
             />
+            <h5>No orders found.</h5>
           </div>
         `;
         return;
