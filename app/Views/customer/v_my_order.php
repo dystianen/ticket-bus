@@ -111,7 +111,12 @@
         if (!response.ok) throw new Error('Failed to cancel order.');
 
         alert('Order canceled successfully.');
-        fetchOrders('under-packaging'); // Refresh data
+        const cancelledTab = document.querySelector('#order-tabs .nav-link[data-status="cancelled"]');
+        if (cancelledTab) {
+          tabs.forEach(t => t.classList.remove('active')); // Remove active class from all tabs
+          finishedTab.classList.add('active'); // Set active class on the 'finished' tab
+          fetchOrders('cancelled'); // Fetch orders for the 'finished' status
+        }
       } catch (error) {
         console.error('Error canceling order:', error);
         alert('Failed to cancel order.');
