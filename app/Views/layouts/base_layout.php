@@ -121,7 +121,7 @@
             <a class="nav-link" href="/top-selling" style="font-weight: 500;">Top Selling</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/new-arrival" style="font-weight: 500;">New Arrival</a>
+            <a class="nav-link" href="/new-arrival" style="font-weight: 500;">New Arrivals</a>
           </li>
         </ul>
 
