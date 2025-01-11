@@ -149,6 +149,11 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                 <li>
+                  <a class="dropdown-item" href="<?= base_url(); ?>profile">
+                    <i class="fa-regular fa-address-card me-2"></i> Profile
+                  </a>
+                </li>
+                <li>
                   <a class="dropdown-item" href="<?= base_url(); ?>my-order">
                     <i class="fa-solid fa-list me-2"></i> My Order
                   </a>

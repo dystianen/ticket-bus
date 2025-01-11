@@ -62,7 +62,6 @@ class AuthController extends BaseController
         }
     }
 
-
     public function registerView()
     {
         return view("v_register");
@@ -110,5 +109,18 @@ class AuthController extends BaseController
         ));
         $session->destroy();
         return redirect()->to(base_url('/login'));
+    }
+
+    public function profile()
+    {
+        $userModel = new UserModel();
+        $session = session();
+        $userId = $session->get('user_id');
+        $user = $userModel->where('user_id', $userId)->first();
+
+        $data = [
+            'user' => $user,
+        ];
+        return view('customer/v_profile', $data);
     }
 }

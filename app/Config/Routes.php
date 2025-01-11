@@ -16,6 +16,7 @@ $routes->get('/unsupported', 'HomeController::unsupportedView');
 
 $routes->group('/', function ($routes) {
   $routes->get('', 'HomeController::index');
+  $routes->get('profile', 'AuthController::profile');
 
   // PRODUCT
   $routes->get('product', 'ProductController::index');

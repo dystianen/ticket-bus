@@ -110,11 +110,6 @@
                 <i class="fa fa-truck"></i> Manage Order
               </a>
             </li>
-            <li class="nav-item w-100">
-              <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-size">
-                <i class="fa fa-ruler-horizontal"></i> Manage Size
-              </a>
-            </li>
           </ul>
         </div>
       </nav>
