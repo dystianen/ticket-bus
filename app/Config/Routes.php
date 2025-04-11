@@ -18,6 +18,9 @@ $routes->group('/', function ($routes) {
   $routes->get('', 'HomeController::index');
   $routes->get('profile', 'AuthController::profile');
 
+  // TICKET
+  $routes->get('search-ticket', 'ScheduleController::searchTicket');
+
   // PRODUCT
   $routes->get('product', 'ProductController::index');
   $routes->get('product/(:num)', 'ProductController::detail/$1');

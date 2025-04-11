@@ -111,8 +111,8 @@ class Cache extends BaseConfig
      * @var array<string, int|string|null>
      */
     public array $file = [
-        // 'storePath' => WRITEPATH . 'cache/',
-        'storePath' => '/tmp',
+        'storePath' => WRITEPATH . 'cache/',
+        // 'storePath' => '/tmp',
         'mode'      => 0640,
     ];
 

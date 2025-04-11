@@ -9,12 +9,20 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
   <link rel="icon" href="<?= base_url() ?>assets/images/logo_imagine.png" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bs-primary: #352f44;
-      --bs-light-primary: #4f4666;
-      --bs-primary-rgb: 53, 47, 68;
+      --bs-primary: #153448;
+      --bs-light-primary: #3C5B6F;
+      --bs-primary-rgb: 60, 91, 111;
       --bs-cream: #FAF0E6
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
     }
 
     a {
@@ -94,11 +102,11 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg z-3" style="height: 100px;">
+  <nav class="position-fixed navbar navbar-expand-lg z-3 glass-navbar" style="height: 80px; width: 100%">
     <div class="container">
       <!-- Logo -->
-      <a class="navbar-brand text-primary" style="font-weight: 700; font-size: 32px; text-decoration: none" href="/">
-        <img src="/assets/images/logo_imagine.png" alt="IMAGINE" width="60px" height="60px">
+      <a class="navbar-brand text-white" style="font-family: 'Lobster', sans-serif; font-weight: 700; font-size: 40px; text-decoration: none; letter-spacing: 5px" href="/">
+        TICKET.com
       </a>
 
       <!-- Toggler Button -->
@@ -107,9 +115,9 @@
       </button>
 
       <!-- Navbar Content -->
-      <div class="gap-4 collapse navbar-collapse align-items-center bg-white" id="navbarSupportedContent">
+      <div class="gap-4 collapse navbar-collapse align-items-center d-flex justify-content-between" id="navbarSupportedContent">
         <!-- Navigation Links -->
-        <ul class="mb-2 navbar-nav me-auto mb-lg-0">
+        <!-- <ul class="mb-2 navbar-nav me-auto mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="/product" style="font-weight: 500;">All Product</a>
           </li>
@@ -119,13 +127,14 @@
           <li class="nav-item">
             <a class="nav-link" href="/new-arrival" style="font-weight: 500;">New Arrivals</a>
           </li>
-        </ul>
+        </ul> -->
 
         <!-- Search Form -->
-        <form class="d-flex" role="search" onsubmit="handleSearch(event)">
+        <!-- <form class="d-flex" role="search" onsubmit="handleSearch(event)">
           <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        </form> -->
+        <div></div>
 
         <!-- User Section -->
         <div class="d-flex justify-content-start align-items-center gap-3 mt-4 mt-md-0 ml-3">
@@ -163,7 +172,7 @@
             </div>
           <?php else: ?>
             <!-- Login/Register Button -->
-            <a href="/login" class="btn btn-outline-primary rounded-pill">Login/Register</a>
+            <a href="/login" class="btn btn-outline-light rounded-pill">Login/Register</a>
           <?php endif; ?>
         </div>
       </div>
@@ -175,7 +184,7 @@
     <?= $this->renderSection('content') ?>
   </main>
 
-  <footer class="pt-5 bg-primary" style="margin-top: 10rem;">
+  <!-- <footer class="pt-5 bg-primary" style="margin-top: 10rem;">
     <section class="container mb-5 rounded-3" style="background-color: var(--bs-cream); margin-top: -7rem;">
       <div class="subscriber-section d-flex flex-column flex-md-row justify-content-between align-content-start align-lg-items-center gap-3">
         <h1 class="text-primary mb-0" style="font-weight: 700;">STAY UP TO DATE ABOUT <br> OUR LATEST OFFERS</h1>
@@ -227,7 +236,7 @@
       </div>
       <p style="margin-top: 50px;">IMAGINE &copy;2024, All Rights Reserved</p>
     </div>
-  </footer>
+  </footer> -->
 
   <!-- SCRIPT -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -1,3 +1,11 @@
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.15); /* Warna dasar semi-transparan */
+  backdrop-filter: blur(1px); /* Efek blur */
+  -webkit-backdrop-filter: blur(1px); /* Untuk Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Garis bawah kaca */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
 .hero-section {
   height: max-content;
 }
