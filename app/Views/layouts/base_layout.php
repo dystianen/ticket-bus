@@ -94,10 +94,6 @@
 </head>
 
 <body>
-  <?php if (!session()->get('is_logged_in')): ?>
-    <header class="pt-1 pb-2 px-2 text-center text-white bg-primary">Sign up and get 20% off to your first order. <a class="text-white text-decoration-underline" href="/signup"> Sign Up Now</a></header>
-  <?php endif; ?>
-
   <nav class="navbar navbar-expand-lg z-3" style="height: 100px;">
     <div class="container">
       <!-- Logo -->
@@ -175,7 +171,7 @@
   </nav>
 
 
-  <main class="container">
+  <main>
     <?= $this->renderSection('content') ?>
   </main>
 

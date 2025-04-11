@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>IMAGINE!</title>
+  <title>TICKET BUS!</title>
   <script src="https://unpkg.com/feather-icons"></script>
   <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
   <link rel="icon" href="<?= base_url() ?>assets/images/logo_imagine.png" type="image/x-icon" />
@@ -86,7 +86,7 @@
       <nav class="navbar navbar-expand-lg d-flex flex-column align-items-start gap-4">
         <!-- Brand -->
         <a class="navbar-brand text-white mt-3" style="font-weight: 700; font-size: 32px; text-decoration: none" href="#">
-          IMAGINE
+          TICKET BUS
         </a>
         <!-- Toggler -->
         <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,7 +97,7 @@
           <ul class="navbar-nav d-flex flex-column gap-3 w-100">
             <li class="nav-item w-100">
               <a class="nav-link text-white d-flex align-items-center gap-2" href="/admin/manage-product">
-                <i class="fa fa-box"></i> Manage Product
+                <i class="fa fa-box"></i> Manage Promo
               </a>
             </li>
             <li class="nav-item w-100">

@@ -51,15 +51,15 @@ $routes->group('/', function ($routes) {
 });
 
 $routes->group('/admin', function ($routes) {
-  $routes->get('manage-product', 'ProductController::manageProduct');
-  $routes->get('product/create', 'ProductController::createProduct');
-  $routes->post('product/create/submit', 'ProductController::submitCreateProduct');
+  // AUTH
+  $routes->get('login', 'AdminController::loginView');
+  $routes->post('login/submit', 'AdminController::loginAuth');
+  $routes->get('register', 'AdminController::registerView');
+  $routes->post('register/submit', 'AdminController::registerAuth');
+  $routes->get('logout', 'AdminController::logout');
 
-  // ORDER
-  $routes->get('manage-order', 'OrderController::manageOrderView');
-  $routes->post('update-order-status/(:num)', 'OrderController::updateOrderStatus/$1');
-
-  // PAYMENT
-  $routes->get('manage-payment', 'PaymentController::managePaymentView');
-  $routes->post('confirm-payment/(:num)', 'PaymentController::confirmPayment/$1');
+  // PROMO
+  $routes->get('promo', 'PromoController::index');
+  $routes->get('promo/create', 'PromoController::create');
+  $routes->post('promo/store', 'PromoController::store');
 });

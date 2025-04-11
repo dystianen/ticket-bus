@@ -77,7 +77,7 @@
   <main>
     <div class="row" style="width: 100%; height: 100dvh; margin: 0">
       <div class="col d-flex justify-content-center align-items-center">
-        <form action="<?php echo base_url(); ?>/login/submit?redirectTo=<?php echo esc($_GET['redirectTo'] ?? ''); ?>" method="post" style="width: 100%">
+        <form action="<?php echo base_url(); ?>/admin/login/submit?redirectTo=<?php echo esc($_GET['redirectTo'] ?? ''); ?>" method="post" style="width: 100%">
           <div class="d-flex flex-column justify-content-center align-items-center gap-4">
             <h1 class="text-primary" style="font-weight: 700">Login!</h1>
 
